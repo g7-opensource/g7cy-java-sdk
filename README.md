@@ -12,6 +12,15 @@
    - enums：枚举
 
 ### API使用说明
+- 依赖jar包
+```xml
+<dependency>
+    <groupId>cn.com.g7</groupId>
+    <artifactId>g7cy-java-sdk</artifactId>
+    <version>${g7cy-java-sdk.version}</version>
+</dependency>
+```
+
 - 参数说明
 ```java
 /** 开放平台host，不同环境不一样*/
@@ -56,8 +65,8 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 ```xml
 <dependency>
     <groupId>cn.com.g7</groupId>
-    <artifactId>openapi-sdk-kafka</artifactId>
-    <version>${openapi-sdk-kafka.version}</version>
+    <artifactId>g7cy-java-sdk</artifactId>
+    <version>${g7cy-java-sdk.version}</version>
 </dependency>
 ```
 
