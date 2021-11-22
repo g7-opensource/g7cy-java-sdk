@@ -41,7 +41,7 @@ public class KafkaV261AutoConfiguration {
     @Bean
     @ConditionalOnBean(IKafkaMessageProcessor.class)
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(name = "spring.kafka.v261.consumer.enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(name = "spring.kafka.v261.consumer.enable", havingValue = "true", matchIfMissing = false)
     public KafkaV261ConsumerFactory kafkaV261ConsumerFactory(List<IKafkaMessageProcessor> kafkaMessageProcessors) {
         // kafka消费者工厂bean
         KafkaV261ConsumerFactory kafkaV261ConsumerFactory = new KafkaV261ConsumerFactory();
