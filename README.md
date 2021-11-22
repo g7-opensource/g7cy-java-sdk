@@ -1,4 +1,4 @@
-###包结构说明
+### 包结构说明
 
 - api：API接口相关
    - enums：枚举
@@ -91,7 +91,6 @@ import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 @Component
 public class G7LocationConsumer extends AbstractLocationConsumer {
 
