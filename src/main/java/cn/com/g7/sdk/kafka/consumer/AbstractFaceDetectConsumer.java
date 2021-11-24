@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
  * @author zhaobijiang
  * @date 2021/11/18
  */
-public abstract class AbstractFaceDetectResponseConsumer implements IKafkaMessageProcessor {
+public abstract class AbstractFaceDetectConsumer implements IKafkaMessageProcessor {
 
-    private final Logger log = LoggerFactory.getLogger(AbstractFaceDetectResponseConsumer.class);
+    private final Logger log = LoggerFactory.getLogger(AbstractFaceDetectConsumer.class);
 
     @Override
     public String code() {
@@ -28,8 +28,7 @@ public abstract class AbstractFaceDetectResponseConsumer implements IKafkaMessag
     @Override
     public void process(String code, ConsumerRecord<String, String> record) {
         log.debug("kafka message, code:{}, topic:{}, value:{}", code, record.topic(), record.value());
-        KafkaData<FaceDetectResult> kafkaData = JSON.parseObject(record.value(), new TypeReference<KafkaData<FaceDetectResult>>() {
-        });
+        KafkaData<FaceDetectResult> kafkaData = JSON.parseObject(record.value(), new TypeReference<KafkaData<FaceDetectResult>>() {});
         process(kafkaData);
     }
 
