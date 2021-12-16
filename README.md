@@ -61,6 +61,7 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 ```
 
 ### Kafka消费数据使用说明(spring boot方式)
+- 安装kafka-client定制包到私有仓库，jar包和源码包在resources/lib目录
 - 依赖jar包
 ```xml
 <dependency>
@@ -68,22 +69,34 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
     <artifactId>g7cy-java-sdk</artifactId>
     <version>${g7cy-java-sdk.version}</version>
 </dependency>
+
+<dependency>
+    <groupId>cn.com.g7</groupId>
+    <artifactId>kafka-clients-v2.6.1</artifactId>
+    <version>${kafka-clients-v261.version}</version>
+    <exclusions>
+        <exclusion>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
 ```
 
 - 配置参数
 ```properties
+spring.kafka.v261.consumer.enable=true
+spring.kafka.v261.orgcode=200001
 spring.kafka.v261.access-key=dev_accesskey
 spring.kafka.v261.access-secret=dev_accesssecret
-spring.kafka.v261.orgcode=200001
-spring.kafka.v261.kafka-broker=broker1:9001,broker2:9001
 ```
 
-- 增加启动参数(避免中文路径)
+- 增加启动参数(避免中文路径，注意修改文件路径)
 ```shell
--DKAFKA_CLIENT_TRUST_STORE=/Users/openapi/Documents/workspace/idea2021/demo-parent/demo-sdk-openapi-kafka/kafka/kafka.client.truststore.jks
+-DKAFKA_CLIENT_TRUST_STORE=-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk-example/src/main/resources/kafka/kafka.client.truststore.jks
 ```
 
-- 继承要订阅的数据处理类，如定位数据
+- 继承要订阅的数据处理类，如定位数据(所有抽象类：cn.com.g7.sdk.kafka.consumer.*)
 ```java
 import cn.com.g7.openapi.sdk.bo.Location;
 import cn.com.g7.openapi.sdk.consumer.AbstractLocationConsumer;

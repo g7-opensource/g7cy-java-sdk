@@ -30,6 +30,8 @@
                     <artifactId>kafka-clients</artifactId>
                 </exclusion>
             </exclusions>
+            <scope>compile</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
