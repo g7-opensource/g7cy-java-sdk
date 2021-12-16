@@ -63,24 +63,27 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 ### Kafka消费数据使用说明(spring boot方式)
 - 安装kafka-client定制包到私有仓库，jar包和源码包在resources/lib目录
 - 依赖jar包
-```xml
-<dependency>
-    <groupId>cn.com.g7</groupId>
-    <artifactId>g7cy-java-sdk</artifactId>
-    <version>${g7cy-java-sdk.version}</version>
-</dependency>
 
-<dependency>
-    <groupId>cn.com.g7</groupId>
-    <artifactId>kafka-clients-v2.6.1</artifactId>
-    <version>${kafka-clients-v261.version}</version>
-    <exclusions>
-        <exclusion>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
+```xml
+<dependencies>
+  <dependency>
+      <groupId>cn.com.g7</groupId>
+      <artifactId>g7cy-java-sdk</artifactId>
+      <version>${g7cy-java-sdk.version}</version>
+  </dependency>
+  
+  <dependency>
+      <groupId>cn.com.g7</groupId>
+      <artifactId>kafka-clients-v2.6.1</artifactId>
+      <version>${kafka-clients-v261.version}</version>
+      <exclusions>
+          <exclusion>
+              <groupId>org.apache.kafka</groupId>
+              <artifactId>kafka-clients</artifactId>
+          </exclusion>
+      </exclusions>
+  </dependency>
+</dependencies>
 ```
 
 - 配置参数
