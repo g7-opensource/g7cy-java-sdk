@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -31,7 +32,7 @@ public class KafkaV261Properties {
     private String trustStorePassword = "123456";
 
     /** 公共属性*/
-    private Map<String, Object> commonProps = new HashMap<>();
+    private Properties commonProps = new Properties();
 
     /** 消费者配置，key为自定义的唯一标识，value为消费者配置*/
     private Map<String, Consumer> consumers = new ConcurrentHashMap<>();
@@ -45,7 +46,7 @@ public class KafkaV261Properties {
     public static class Consumer {
 
         /** 配置属性*/
-        private Map<String, Object> props = new HashMap<>();
+        private Properties props = new Properties();
 
         /** topic，只支持单个*/
         private String topic;
@@ -77,11 +78,11 @@ public class KafkaV261Properties {
         /** 最大批量处理数量，为1表示单条处理，大于1表示每次处理多条。默认为1*/
         private int maxBatchSize = 1;
 
-        public Map<String, Object> getProps() {
+        public Properties getProps() {
             return props;
         }
 
-        public void setProps(Map<String, Object> props) {
+        public void setProps(Properties props) {
             this.props = props;
         }
 
@@ -206,11 +207,11 @@ public class KafkaV261Properties {
         this.trustStorePassword = trustStorePassword;
     }
 
-    public Map<String, Object> getCommonProps() {
+    public Properties getCommonProps() {
         return commonProps;
     }
 
-    public void setCommonProps(Map<String, Object> commonProps) {
+    public void setCommonProps(Properties commonProps) {
         this.commonProps = commonProps;
     }
 

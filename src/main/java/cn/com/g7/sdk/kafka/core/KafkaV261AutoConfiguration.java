@@ -16,9 +16,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * spring boot自动配置
@@ -83,7 +83,7 @@ public class KafkaV261AutoConfiguration {
         // 根据消费者配置初始化消费者
         for(Map.Entry<String, KafkaV261Properties.Consumer> entry : kafkaV261Properties.getConsumers().entrySet()) {
             // 合并配置参数，不能改变commonProps的数据，否则同时初始化多个会出现配置参数混乱的情况
-            Map<String, Object> props = new HashMap<>(KafkaConstants.DEFAULT_INITIAL_CAPACITY);
+            Properties props = new Properties();
             props.putAll(kafkaV261Properties.getCommonProps());
             props.putAll(entry.getValue().getProps());
             entry.getValue().setTopic(buildTopic(entry.getKey()));
