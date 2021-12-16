@@ -21,6 +21,13 @@
 </dependency>
 ```
 
+- 配置参数（spring boot方式）
+```properties
+g7.openapi.url=https://openapi.huoyunren.com
+g7.openapi.access-key=dev_accesskey
+g7.openapi.access-secret=dev_accesssecret
+```
+
 - 参数说明
 ```java
 /** 开放平台host，不同环境不一样*/
@@ -88,10 +95,10 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 
 - 配置参数
 ```properties
-spring.kafka.v261.consumer.enable=true
-spring.kafka.v261.orgcode=200001
-spring.kafka.v261.access-key=dev_accesskey
-spring.kafka.v261.access-secret=dev_accesssecret
+g7.kafka.consumer.enable=true
+g7.kafka.orgcode=200001
+g7.kafka.access-key=dev_accesskey
+g7.kafka.access-secret=dev_accesssecret
 ```
 
 - 增加启动参数(避免中文路径，注意修改文件路径)

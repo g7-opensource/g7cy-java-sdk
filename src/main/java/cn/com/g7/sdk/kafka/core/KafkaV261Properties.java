@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0.0
  * @date 2021/9/18 2:45 下午
  */
-@ConfigurationProperties(prefix = "spring.kafka.v261")
+@ConfigurationProperties(prefix = "g7.kafka")
 public class KafkaV261Properties {
 
     /** 机构号*/
