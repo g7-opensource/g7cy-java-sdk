@@ -100,7 +100,14 @@ public class KafkaV261AutoConfiguration {
      * @return topic名称
      */
     private String buildTopic(String code) {
-        return kafkaV261Properties.getOrgcode() + "_" + kafkaV261Properties.getAccessKey() + "_" + code;
+        return new StringBuilder()
+                .append("topic_")
+                .append(kafkaV261Properties.getOrgcode())
+                .append("_")
+                .append(kafkaV261Properties.getAccessKey())
+                .append("_")
+                .append(code)
+                .toString();
     }
 
     /**
@@ -108,6 +115,11 @@ public class KafkaV261AutoConfiguration {
      * @return 消费组名称
      */
     private String buildGroup() {
-        return kafkaV261Properties.getOrgcode() + "_" + kafkaV261Properties.getAccessKey();
+        return new StringBuilder()
+                .append("group_")
+                .append(kafkaV261Properties.getOrgcode())
+                .append("_")
+                .append(kafkaV261Properties.getAccessKey())
+                .toString();
     }
 }

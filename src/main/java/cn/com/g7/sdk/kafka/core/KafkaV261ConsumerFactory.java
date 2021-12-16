@@ -374,7 +374,7 @@ public class KafkaV261ConsumerFactory {
         if (offsets.isEmpty()) {
             // 如果所有offset都没有更新，则提交全部分片的offset
             Map<TopicPartition, OffsetAndMetadata> offsetAndMetadataMap = kafkaConsumer.committed(topicPartitionSet);
-            if (offsetAndMetadataMap != null) {
+            if (offsetAndMetadataMap != null && !offsetAndMetadataMap.isEmpty()) {
                 offsets.putAll(offsetAndMetadataMap);
             }
         }

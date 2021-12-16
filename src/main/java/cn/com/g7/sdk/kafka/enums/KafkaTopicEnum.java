@@ -10,24 +10,20 @@ public enum KafkaTopicEnum {
 
     /** 定位数据*/
     LOCATION("location"),
-
     /** 便携式冷链数据*/
     PORTABLE_COLD_CHAIN("portable_cold_chain"),
-
     /** 固定式冷链数据*/
     FIXED_COLD_CHAIN("fixed_cold_chain"),
-
+    /** 司机疲劳事件*/
+    TIRED_DRIVER("tired_driver"),
+    /** 多媒体*/
+    MEDIA("media"),
+    /** ADAS事件*/
+    ADAS("adas"),
     /** 人脸识别响应数据数据*/
     FACE_DETECT_RESPONSE("topic_face_detect_response"),
 
-    /** 事件数据*/
-    @Deprecated
-    EVENT("event"),
-
-    /** 媒体事件数据*/
-    @Deprecated
-    MEDIA_EVENT("mediaEvent");
-
+    ;
     /** 编号*/
     private final String code;
 

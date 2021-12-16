@@ -72,7 +72,7 @@ public class KafkaV261Properties {
         private long expInterval = 5000;
 
         /** 内存队列最大等待数量，超过此数量时将暂停拉取数据*/
-        private int maxQueueSize = 2000;
+        private int maxQueueSize = 1000;
 
         /** 最大批量处理数量，为1表示单条处理，大于1表示每次处理多条。默认为1*/
         private int maxBatchSize = 1;
