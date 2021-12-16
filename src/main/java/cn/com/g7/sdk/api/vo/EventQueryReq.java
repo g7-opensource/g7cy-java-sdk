@@ -12,13 +12,13 @@ import java.util.List;
  */
 public class EventQueryReq {
 
-    /** 根据车辆，司机，机构查询事件 TODO 字段类型不一致**/
+    /** 根据车辆，司机，机构查询事件 TODO 字段类型不一致*/
     private List<String> orgcodes;
 
-    /** 设备号，以逗号分隔**/
+    /** 设备号，以逗号分隔*/
     private String gpsnos;
 
-    /** 事件类型**/
+    /** 事件类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     private List<String> eventTypes;
 
     /** 开始时间：时间戳(毫秒)*/
@@ -37,7 +37,7 @@ public class EventQueryReq {
     @JSONField(name = "carnums")
     private List<String> carNums;
 
-    /** [暂不支持]子事件类型(与eventTypes二选一)**/
+    /** [暂不支持]子事件类型(与eventTypes二选一) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     private List<EventType> eventSubTypes;
 
     public List<String> getOrgcodes() {

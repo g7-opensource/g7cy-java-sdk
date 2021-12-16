@@ -16,10 +16,10 @@ public class IotEventMedia {
     /** 设备imei*/
     private String imei;
 
-    /** 事件类型*/
+    /** 事件类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     private int eventType;
 
-    /** 事件子类型*/
+    /** 事件子类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     private int subEventType;
 
     /** 视频文件，key为通道号，value为视频文件地址*/

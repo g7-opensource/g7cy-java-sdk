@@ -29,15 +29,15 @@ public class IotEvent {
     @JSONField(name = "alarm_status")
     private Integer alarmStatus;
 
-    /** 事件类型(旧编号） */
+    /** 事件类型(旧编号) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     @JSONField(name = "alarm_type")
     private Integer alarmType;
 
-    /** 事件类型（新编号）*/
+    /** 事件类型(新编号) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     @JSONField(name = "event_type")
     private Integer eventType;
 
-    /** 事件子类型*/
+    /** 事件子类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
     @JSONField(name = "sub_event_type")
     private Integer subEventType;
 
