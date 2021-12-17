@@ -64,10 +64,10 @@ public class PortableColdChain {
     private Integer batteryPower;
 
     /** 经度,WGS84坐标系*/
-    private Double lng;
+    private BigDecimal lng;
 
     /** 维度,WGS84坐标系*/
-    private Double lat;
+    private BigDecimal lat;
 
     public String getPlateNum() {
         return plateNum;
@@ -173,19 +173,19 @@ public class PortableColdChain {
         this.batteryPower = batteryPower;
     }
 
-    public Double getLng() {
+    public BigDecimal getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(BigDecimal lng) {
         this.lng = lng;
     }
 
-    public Double getLat() {
+    public BigDecimal getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(BigDecimal lat) {
         this.lat = lat;
     }
 }

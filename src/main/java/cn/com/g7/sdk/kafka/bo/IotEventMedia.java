@@ -1,5 +1,7 @@
 package cn.com.g7.sdk.kafka.bo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Map;
 
 /**
@@ -17,10 +19,12 @@ public class IotEventMedia {
     private String imei;
 
     /** 事件类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
-    private int eventType;
+    @JSONField(name = "event_type")
+    private Integer eventType;
 
     /** 事件子类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
-    private int subEventType;
+    @JSONField(name = "sub_event_type")
+    private Integer subEventType;
 
     /** 视频文件，key为通道号，value为视频文件地址*/
     private Map<String, String> videos;
@@ -52,11 +56,11 @@ public class IotEventMedia {
         this.eventType = eventType;
     }
 
-    public int getSubEventType() {
+    public Integer getSubEventType() {
         return subEventType;
     }
 
-    public void setSubEventType(int subEventType) {
+    public void setSubEventType(Integer subEventType) {
         this.subEventType = subEventType;
     }
 

@@ -24,10 +24,10 @@ public class Location {
     private String imei;
 
     /** 经度，WGS84坐标系*/
-    private Double lng;
+    private BigDecimal lng;
 
     /** 纬度，WGS84坐标系*/
-    private Double lat;
+    private BigDecimal lat;
 
     /** 速度，单位：km/h*/
     private Integer speed;
@@ -71,19 +71,19 @@ public class Location {
         this.imei = imei;
     }
 
-    public Double getLng() {
+    public BigDecimal getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(BigDecimal lng) {
         this.lng = lng;
     }
 
-    public Double getLat() {
+    public BigDecimal getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(BigDecimal lat) {
         this.lat = lat;
     }
 

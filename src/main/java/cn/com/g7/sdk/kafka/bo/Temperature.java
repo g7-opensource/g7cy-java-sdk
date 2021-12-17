@@ -2,6 +2,8 @@ package cn.com.g7.sdk.kafka.bo;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.math.BigDecimal;
+
 /**
  * @author dengfuwei
  * @version 1.0.0
@@ -22,26 +24,26 @@ public class Temperature {
 
     /** 探头温度（数据上传时的瞬时温度）*/
     @JSONField(name = "cur_temp")
-    private Double curTemp;
+    private BigDecimal curTemp;
 
     /** 最低温度（如10秒上传一条数据，则此10秒内的最低温度）*/
     @JSONField(name = "low_temp")
-    private Double lowTemp;
+    private BigDecimal lowTemp;
 
     /** 最高温度（如10秒上传一条数据，则此10秒内的最高温度）*/
     @JSONField(name = "high_temp")
-    private Double highTemp;
+    private BigDecimal highTemp;
 
     /** 湿度，单位：%*/
-    private Double humidity;
+    private BigDecimal humidity;
 
     /** 最低湿度（如10秒上传一条数据，则此10秒内的最低湿度）*/
     @JSONField(name = "low_hum")
-    private Double lowHum;
+    private BigDecimal lowHum;
 
     /** 最高湿度（如10秒上传一条数据，则此10秒内的最高湿度）*/
     @JSONField(name = "high_hum")
-    private Double highHum;
+    private BigDecimal highHum;
 
     public Integer getNum() {
         return num;
@@ -67,51 +69,51 @@ public class Temperature {
         this.humAlarm = humAlarm;
     }
 
-    public Double getCurTemp() {
+    public BigDecimal getCurTemp() {
         return curTemp;
     }
 
-    public void setCurTemp(Double curTemp) {
+    public void setCurTemp(BigDecimal curTemp) {
         this.curTemp = curTemp;
     }
 
-    public Double getLowTemp() {
+    public BigDecimal getLowTemp() {
         return lowTemp;
     }
 
-    public void setLowTemp(Double lowTemp) {
+    public void setLowTemp(BigDecimal lowTemp) {
         this.lowTemp = lowTemp;
     }
 
-    public Double getHighTemp() {
+    public BigDecimal getHighTemp() {
         return highTemp;
     }
 
-    public void setHighTemp(Double highTemp) {
+    public void setHighTemp(BigDecimal highTemp) {
         this.highTemp = highTemp;
     }
 
-    public Double getHumidity() {
+    public BigDecimal getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Double humidity) {
+    public void setHumidity(BigDecimal humidity) {
         this.humidity = humidity;
     }
 
-    public Double getLowHum() {
+    public BigDecimal getLowHum() {
         return lowHum;
     }
 
-    public void setLowHum(Double lowHum) {
+    public void setLowHum(BigDecimal lowHum) {
         this.lowHum = lowHum;
     }
 
-    public Double getHighHum() {
+    public BigDecimal getHighHum() {
         return highHum;
     }
 
-    public void setHighHum(Double highHum) {
+    public void setHighHum(BigDecimal highHum) {
         this.highHum = highHum;
     }
 }

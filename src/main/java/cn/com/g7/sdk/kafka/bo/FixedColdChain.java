@@ -2,6 +2,7 @@ package cn.com.g7.sdk.kafka.bo;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -29,14 +30,14 @@ public class FixedColdChain {
     private String orgcode;
 
     /** 经度,WGS84坐标系*/
-    private Double lng;
+    private BigDecimal lng;
 
     /** 维度,WGS84坐标系*/
-    private Double lat;
+    private BigDecimal lat;
 
     /** 环境温度*/
     @JSONField(name = "env_temp")
-    private Double envTemp;
+    private BigDecimal envTemp;
 
     /** acc状态*/
     private Integer acc;
@@ -48,7 +49,7 @@ public class FixedColdChain {
     private Integer door;
 
     /** 速度，单位：km/h*/
-    private Double speed;
+    private BigDecimal speed;
 
     /** 温湿度明细，每个探头一条数据*/
     private List<Temperature> temperatures;
@@ -93,27 +94,27 @@ public class FixedColdChain {
         this.orgcode = orgcode;
     }
 
-    public Double getLng() {
+    public BigDecimal getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(BigDecimal lng) {
         this.lng = lng;
     }
 
-    public Double getLat() {
+    public BigDecimal getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(BigDecimal lat) {
         this.lat = lat;
     }
 
-    public Double getEnvTemp() {
+    public BigDecimal getEnvTemp() {
         return envTemp;
     }
 
-    public void setEnvTemp(Double envTemp) {
+    public void setEnvTemp(BigDecimal envTemp) {
         this.envTemp = envTemp;
     }
 
@@ -141,11 +142,11 @@ public class FixedColdChain {
         this.door = door;
     }
 
-    public Double getSpeed() {
+    public BigDecimal getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Double speed) {
+    public void setSpeed(BigDecimal speed) {
         this.speed = speed;
     }
 
