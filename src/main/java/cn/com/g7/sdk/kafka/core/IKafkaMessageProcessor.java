@@ -1,5 +1,6 @@
 package cn.com.g7.sdk.kafka.core;
 
+import cn.com.g7.sdk.kafka.enums.DataCodeEnum;
 import org.apache.kafka.v261.clients.consumer.ConsumerRecord;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface IKafkaMessageProcessor {
 	String DEFAULT = "DEFAULT";
 
 	/**
-	 * 订阅数据的编号{@link cn.com.g7.sdk.kafka.enums.KafkaTopicEnum}
+	 * 订阅数据的编号{@link DataCodeEnum}
 	 * @return topic名称
 	 */
 	default String code() {

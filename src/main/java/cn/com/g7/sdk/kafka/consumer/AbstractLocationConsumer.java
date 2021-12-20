@@ -3,7 +3,7 @@ package cn.com.g7.sdk.kafka.consumer;
 import cn.com.g7.sdk.kafka.bo.KafkaData;
 import cn.com.g7.sdk.kafka.bo.Location;
 import cn.com.g7.sdk.kafka.core.IKafkaMessageProcessor;
-import cn.com.g7.sdk.kafka.enums.KafkaTopicEnum;
+import cn.com.g7.sdk.kafka.enums.DataCodeEnum;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import org.apache.kafka.v261.clients.consumer.ConsumerRecord;
@@ -22,7 +22,7 @@ public abstract class AbstractLocationConsumer implements IKafkaMessageProcessor
 
     @Override
     public String code() {
-        return KafkaTopicEnum.LOCATION.getCode();
+        return DataCodeEnum.LOCATION.getCode();
     }
 
     @Override

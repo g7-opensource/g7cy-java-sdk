@@ -1,12 +1,12 @@
 package cn.com.g7.sdk.kafka.enums;
 
 /**
- * kafka topic数据类型枚举
+ * kafka 数据类型枚举
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/10/8 11:20 上午
  */
-public enum KafkaTopicEnum {
+public enum DataCodeEnum {
 
     /** 定位数据*/
     LOCATION("location"),
@@ -22,12 +22,12 @@ public enum KafkaTopicEnum {
     ADAS("adas"),
     /** 人脸识别响应数据数据*/
     FACE_DETECT_RESPONSE("topic_face_detect_response"),
-
     ;
+
     /** 编号*/
     private final String code;
 
-    KafkaTopicEnum(String code) {
+    DataCodeEnum(String code) {
         this.code = code;
     }
 
