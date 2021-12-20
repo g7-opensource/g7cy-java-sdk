@@ -20,6 +20,7 @@ public class ApiConstants {
     /** 编码UTF-8 */
     public static final String ENCODING = "UTF-8";
 
+    /** 签名头的前缀*/
     public static final String AUTH_PREFIX = "g7ac";
 
     /** 换行符 */
@@ -45,6 +46,12 @@ public class ApiConstants {
 
     /** 请求头，当前时间，必传*/
     public static final String HTTP_HEADER_G7_TIMESTAMP= "X-G7-OpenAPI-Timestamp";
+
+    /** 请求头，请求方式，标记请求方式，方便统计*/
+    public static final String HTTP_HEADER_REQUEST_TYPE= "REQUEST_TYPE";
+
+    /** 请求头，请求方式SDK版本*/
+    public static final String HTTP_REQUEST_SDK= "G7CY_SDK_v20211216-SNAPSHOT";
 
     /** 参与签名的系统Header前缀,只有指定前缀的Header才会参与到签名中 */
     public static final String CA_HEADER_TO_SIGN_PREFIX_SYSTEM = "X-G7-Ca-";

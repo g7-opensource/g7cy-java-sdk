@@ -1,8 +1,8 @@
 package cn.com.g7.sdk.api.request.impl;
 
 import cn.com.g7.sdk.api.ApiConstants;
-import cn.com.g7.sdk.api.enums.MethodEnum;
 import cn.com.g7.sdk.api.G7OpenapiException;
+import cn.com.g7.sdk.api.enums.MethodEnum;
 import cn.com.g7.sdk.api.request.G7OpenapiResult;
 import cn.com.g7.sdk.api.request.IRequest;
 import cn.com.g7.sdk.api.request.RequestContext;
@@ -60,6 +60,7 @@ public class RestTemplateRequest implements IRequest {
             context.getHeaders().put(ApiConstants.HTTP_HEADER_CONTENT_MD5, MessageDigestUtil.base64AndMd5(context.getBody()));
         }
 
+        context.getHeaders().put(ApiConstants.HTTP_HEADER_REQUEST_TYPE, ApiConstants.HTTP_REQUEST_SDK);
         String sign = SignUtil.sign(context.getAccessSecret(), context.getMethod().getMethod().name(), context.getUri(), context.getHeaders(), context.getQuery(), null);
         context.getHeaders().put(ApiConstants.X_CA_SIGNATURE, ApiConstants.AUTH_PREFIX + " " + context.getAccessKey() + ApiConstants.SPE2_COLON + sign);
 
