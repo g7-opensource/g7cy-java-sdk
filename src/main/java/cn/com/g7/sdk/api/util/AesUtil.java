@@ -51,7 +51,7 @@ public class AesUtil {
      * @param target 待加密数据
      * @param key    密码
      * @return 返回加密成功后数据
-     * @throws Exception
+     * @throws Exception - 异常
      */
     public static byte[] encrypt(byte[] target, String key) throws Exception {
         SecretKey secretKey = getSecretKey(key);
@@ -68,7 +68,7 @@ public class AesUtil {
      * @param target 待解密数据
      * @param key    密码
      * @return 返回解密后的数据
-     * @throws Exception
+     * @throws Exception - 异常
      */
     public static byte[] decrypt(byte[] target, String key) throws Exception {
         SecretKey secretKey = getSecretKey(key);
@@ -86,7 +86,7 @@ public class AesUtil {
      * @param target 明文
      * @param key    密码
      * @return 返回base64内容
-     * @throws Exception
+     * @throws Exception - 异常
      */
     public static String encryptToBase64String(String target, String key) throws Exception {
         byte[] data = target.getBytes(StandardCharsets.UTF_8);
@@ -100,7 +100,7 @@ public class AesUtil {
      * @param base64String 待解密文本
      * @param key  密码
      * @return 返回明文
-     * @throws Exception
+     * @throws Exception - 异常
      */
     public static String decryptFromBase64String(String base64String, String key) throws Exception {
         byte[] data = Base64.getDecoder().decode(base64String);

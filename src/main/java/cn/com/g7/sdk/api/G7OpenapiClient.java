@@ -11,6 +11,7 @@ import cn.com.g7.sdk.api.vo.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -534,7 +535,7 @@ public class G7OpenapiClient {
         //请求参数
         query.put("plate_num", req.getPlateNum());
         query.put("fields", req.getFields());
-        if (null != req.getAddrRequired()) {
+        if (!ObjectUtils.isEmpty(req.getAddrRequired())) {
             query.put("addr_required", String.valueOf(req.getAddrRequired()));
         }
         context.setQuery(query);
@@ -628,7 +629,7 @@ public class G7OpenapiClient {
             query.put("addr_required", String.valueOf(req.getAddrRequired()));
         }
         context.setQuery(query);
-        Type type = new TypeReference<G7OpenapiResult<TruckCurrentInfoResp>>() {}.getType();
+        Type type = new TypeReference<G7OpenapiResult<TruckCurrentInfoResp>>(){}.getType();
         return this.request.request(context, type);
     }
 
