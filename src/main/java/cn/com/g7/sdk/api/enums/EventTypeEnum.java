@@ -1,4 +1,4 @@
-package cn.com.g7.sdk.enums;
+package cn.com.g7.sdk.api.enums;
 
 /**
  * 事件类型枚举
@@ -588,7 +588,8 @@ public enum EventTypeEnum {
     /** SD卡无法存储或读取 */
     SD_NOT_STORAGE_OR_READ(102, 0, 11102, 0, "SD卡无法存储或读取"),
     /** SD频繁格式化 */
-    SD_FORMAT_TOO_FREQUENTLY(103, 0, 11103, 0, "SD频繁格式化");;
+    SD_FORMAT_TOO_FREQUENTLY(103, 0, 11103, 0, "SD频繁格式化"),
+    ;
 
     /** 事件类型（旧编码）*/
     private Integer alarmType;

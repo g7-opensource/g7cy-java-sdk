@@ -1,5 +1,6 @@
 package cn.com.g7.sdk.kafka.bo;
 
+import cn.com.g7.sdk.api.enums.EventTypeEnum;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import java.math.BigDecimal;
@@ -29,15 +30,15 @@ public class IotEvent {
     @JSONField(name = "alarm_status")
     private Integer alarmStatus;
 
-    /** 事件类型(旧编号) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
+    /** 事件类型(旧编号) {@link EventTypeEnum}*/
     @JSONField(name = "alarm_type")
     private Integer alarmType;
 
-    /** 事件类型(新编号) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
+    /** 事件类型(新编号) {@link EventTypeEnum}*/
     @JSONField(name = "event_type")
     private Integer eventType;
 
-    /** 事件子类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
+    /** 事件子类型 {@link EventTypeEnum}*/
     @JSONField(name = "sub_event_type")
     private Integer subEventType;
 

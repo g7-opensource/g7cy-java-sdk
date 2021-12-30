@@ -1,5 +1,6 @@
 package cn.com.g7.sdk.api.vo;
 
+import cn.com.g7.sdk.api.enums.EventTypeEnum;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class EventQueryReq {
     /** 设备号，以逗号分隔*/
     private String gpsnos;
 
-    /** 事件类型 {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
+    /** 事件类型 {@link EventTypeEnum}*/
     private List<String> eventTypes;
 
     /** 开始时间：时间戳(毫秒)*/
@@ -37,7 +38,7 @@ public class EventQueryReq {
     @JSONField(name = "carnums")
     private List<String> carNums;
 
-    /** [暂不支持]子事件类型(与eventTypes二选一) {@link cn.com.g7.sdk.enums.EventTypeEnum}*/
+    /** [暂不支持]子事件类型(与eventTypes二选一) {@link EventTypeEnum}*/
     private List<EventType> eventSubTypes;
 
     public List<String> getOrgcodes() {
