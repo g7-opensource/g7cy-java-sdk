@@ -16,7 +16,7 @@
         <slf4j.version>1.7.30</slf4j.version>
         <spring-framework.version>5.2.7.RELEASE</spring-framework.version>
         <spring-boot.version>2.2.8.RELEASE</spring-boot.version>
-        <kafka-clients-v261.version>2.6.1.1-SNAPSHOT</kafka-clients-v261.version>
+        <kafka-clients-v261.version>2.6.1.1</kafka-clients-v261.version>
         <junit.version>1.5.1</junit.version>
     </properties>
 
