@@ -53,8 +53,16 @@ G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(accessKey, accessSecret);
 ```
 - 创建API客户端(示例三)
 ```java
-// 创建开放平台接口客户端,可配置对用的环境地址,使用RestTemplate请求方式
+// 创建开放平台接口客户端,可配置对应的环境地址,使用RestTemplate请求方式
 G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(url,accessKey, accessSecret);
+```
+- 创建API客户端(示例四)
+```java
+// 创建开放平台接口客户端,可配置对应的环境地址、连接超时、响应超时、参数；使用RestTemplate请求方式
+G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(url, accessKey, accessSecret, connectTimeout, readTimeout);
+
+// 创建开放平台接口客户端,可配置连接超时、响应超时、参数；使用RestTemplate请求方式
+G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(accessKey, accessSecret, connectTimeout, readTimeout);
 ```
 
 - 请求示例
