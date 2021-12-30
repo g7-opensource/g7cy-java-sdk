@@ -17,6 +17,7 @@
         <spring-framework.version>5.2.7.RELEASE</spring-framework.version>
         <spring-boot.version>2.2.8.RELEASE</spring-boot.version>
         <kafka-clients-v261.version>2.6.1.1-SNAPSHOT</kafka-clients-v261.version>
+        <junit.version>1.5.1</junit.version>
     </properties>
 
     <dependencies>
@@ -97,7 +98,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>1.5.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
