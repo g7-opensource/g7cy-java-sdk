@@ -361,9 +361,7 @@ public class KafkaV261ConsumerFactory {
         }
 
         // 记录的offset如果没有在当前消费者的partition范围中，则移除，不进行提交操作
-        Iterator<Map.Entry<TopicPartition, OffsetAndMetadata>> iterator = offsets.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<TopicPartition, OffsetAndMetadata> entry = iterator.next();
+        for (Map.Entry<TopicPartition, OffsetAndMetadata> entry : offsets.entrySet()) {
             if (!topicPartitionSet.contains(entry.getKey())) {
                 log.debug("{} remove:{}", context.getCode(), entry.getKey());
                 offsets.remove(entry.getKey());

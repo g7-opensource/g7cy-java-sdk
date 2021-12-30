@@ -20,12 +20,9 @@ public class KafkaMessageProcessor implements IKafkaMessageProcessor {
 
     private final Logger log = LoggerFactory.getLogger(KafkaMessageProcessor.class);
 
-    private List<IMessageConsumer> messageConsumers;
-
-    private Map<String, IMessageConsumer> messageConsumerMap;
+    private final Map<String, IMessageConsumer> messageConsumerMap;
 
     public KafkaMessageProcessor(List<IMessageConsumer> messageConsumers) {
-        this.messageConsumers = messageConsumers;
         messageConsumerMap = new HashMap<>(messageConsumers.size());
         messageConsumers.forEach(m -> messageConsumerMap.put(m.code(), m));
     }

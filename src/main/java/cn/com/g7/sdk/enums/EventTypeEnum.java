@@ -1,6 +1,7 @@
 package cn.com.g7.sdk.enums;
 
 /**
+ * 事件类型枚举
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/12/16 4:43 下午
@@ -589,29 +590,19 @@ public enum EventTypeEnum {
     /** SD频繁格式化 */
     SD_FORMAT_TOO_FREQUENTLY(103, 0, 11103, 0, "SD频繁格式化");;
 
-    /**
-     * 事件类型（旧编码）
-     */
+    /** 事件类型（旧编码）*/
     private Integer alarmType;
 
-    /**
-     * 事件子类型（旧编码）
-     */
+    /** 事件子类型（旧编码）*/
     private Integer subAlarmType;
 
-    /**
-     * 事件类型（新编码）
-     */
+    /** 事件类型（新编码）*/
     private Integer eventType;
 
-    /**
-     * 事件子类型（新编码）
-     */
+    /** 事件子类型（新编码）*/
     private Integer subEventType;
 
-    /**
-     * 事件名称
-     */
+    /** 事件名称*/
     private String name;
 
     EventTypeEnum(Integer alarmType, Integer subAlarmType, Integer eventType, Integer subEventType, String name) {
