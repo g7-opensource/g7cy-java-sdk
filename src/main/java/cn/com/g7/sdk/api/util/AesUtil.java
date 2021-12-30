@@ -20,9 +20,6 @@ import java.util.Base64;
  */
 public class AesUtil {
 
-    /** 字符集 */
-    private static final String UTF8 = "UTF-8";
-
     /** 算法 */
     private static final String ALGORITHM = "AES";
 

@@ -8,9 +8,11 @@ package cn.com.g7.sdk.api.enums;
  */
 public enum DataStatusEnum {
 
-    /** 0:未删除, 1:已删除, 2:全部*/
+    /** 0:未删除 */
     UN_DELETE(0),
+    /** 1:已删除 */
     DELETED(1),
+    /** 2:全部*/
     ALL(2);
 
     private final Integer code;

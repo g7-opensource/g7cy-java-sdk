@@ -756,6 +756,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-创建人脸用户信息
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Fface%2Fuser%2Fcreate&method=POST&id=426
      *
      * @param req - 创建人脸用户请求参数
      * @return FaceUserResp - 创建人脸用户返回信息
@@ -771,6 +772,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-修改人脸用户信息
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Fface%2Fuser%2Fupdate&method=POST&id=432
      *
      * @param req - 修改人脸用户请求参数
      * @return FaceUserResp - 修改人脸用户返回信息
@@ -786,6 +788,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-删除人脸用户信息
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Fface%2Fuser%2Fdelete&method=POST&id=431
      *
      * @param req - 删除人脸用户请求参数
      * @return FaceUserResp - 删除人脸用户返回信息
@@ -801,6 +804,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-查询人脸用户信息
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Fface%2Fuser%2Fquery&method=GET&id=427
      *
      * @param req - 查询人脸用户请求参数
      * @return List<FaceUserResp> - 查询人脸用户返回信息
@@ -819,6 +823,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-创建车辆标签
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Ftruck%2Flabel%2Fsave&method=POST&id=428
      *
      * @param req - 创建车辆标签请求参数
      * @return List<FaceTruckLabel> - 创建车辆标签返回信息
@@ -834,6 +839,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-删除车辆标签
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Ftruck%2Flabel%2Fdelete&method=POST&id=429
      *
      * @param req - 删除车辆标签请求参数
      * @return Void - null
@@ -849,6 +855,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-查询车辆标签
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fapi%2Ftruck%2Flabel%2Fquery&method=POST&id=430
      *
      * @param req - 查询车辆标签请求参数
      * @return List<FaceTruckLabel> - 查询车辆标签返回信息
