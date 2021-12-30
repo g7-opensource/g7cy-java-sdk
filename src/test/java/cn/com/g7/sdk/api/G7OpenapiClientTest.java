@@ -3,6 +3,7 @@ package cn.com.g7.sdk.api;
 import cn.com.g7.sdk.api.enums.CurrentInfoEnum;
 import cn.com.g7.sdk.api.enums.GetCountEnum;
 import cn.com.g7.sdk.api.enums.GpsStatusEnum;
+import cn.com.g7.sdk.api.util.AssertUtil;
 import cn.com.g7.sdk.api.vo.*;
 import cn.com.g7.sdk.api.util.JsonUtil;
 import org.junit.jupiter.api.Assertions;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -313,5 +315,32 @@ public class G7OpenapiClientTest {
         List<RealTimeVideoResp> realTimeVideoResp = g7OpenapiClient.realTimeByCarNum(req);
         log.info("rsp:{}", JsonUtil.toJson(realTimeVideoResp));
         Assertions.assertNotNull(realTimeVideoResp);
+    }
+
+    @Test
+    public void faceTruckLabelDeleteTest() {
+        G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(accessKey, accessSecret);
+        FaceTruckLabelDeleteOrQueryReq req = new FaceTruckLabelDeleteOrQueryReq();
+        req.setOrgcode("2017B6");
+        List<String> plateNums = new ArrayList<>();
+        plateNums.add("川A12345");
+        req.setPlateNums(plateNums);
+        g7OpenapiClient.faceTruckLabelDelete(req);
+    }
+
+    @Test
+    public void faceTruckLabelSaveTest() {
+        // 创建请求bean
+        G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(accessKey, accessSecret);
+        FaceTruckLabelCreateReq req = new FaceTruckLabelCreateReq();
+        req.setOrgcode("2017B6");
+        FaceTruckLabel truckLabel = new FaceTruckLabel();
+        truckLabel.setPlateNum("川A12345");
+        truckLabel.setLabel("xinan");
+        List<FaceTruckLabel> labels = new ArrayList<>(4);
+        labels.add(truckLabel);
+        req.setLabels(labels);
+        List<FaceTruckLabel> faceTruckLabelList = g7OpenapiClient.faceTruckLabelSave(req);
+        AssertUtil.notNull(faceTruckLabelList);
     }
 }

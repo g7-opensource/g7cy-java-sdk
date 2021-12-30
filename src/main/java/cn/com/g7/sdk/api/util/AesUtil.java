@@ -3,6 +3,7 @@ package cn.com.g7.sdk.api.util;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 /**
@@ -91,7 +92,7 @@ public class AesUtil {
      * @throws Exception
      */
     public static String encryptToBase64String(String target, String key) throws Exception {
-        byte[] data = target.getBytes(UTF8);
+        byte[] data = target.getBytes(StandardCharsets.UTF_8);
         byte[] result = encrypt(data, key);
         return Base64.getEncoder().encodeToString(result);
     }
@@ -107,6 +108,6 @@ public class AesUtil {
     public static String decryptFromBase64String(String base64String, String key) throws Exception {
         byte[] data = Base64.getDecoder().decode(base64String);
         byte[] contentData = decrypt(data, key);
-        return new String(contentData, UTF8);
+        return new String(contentData, StandardCharsets.UTF_8);
     }
 }

@@ -20,8 +20,8 @@ public class FaceTruckLabelDeleteOrQueryReq {
     /**
      * 车辆编号列表
      */
-    @JSONField(name = "plat_nums")
-    private List<String> platNums;
+    @JSONField(name = "plate_nums")
+    private List<String> plateNums;
 
     public String getOrgcode() {
         return orgcode;
@@ -31,11 +31,11 @@ public class FaceTruckLabelDeleteOrQueryReq {
         this.orgcode = orgcode;
     }
 
-    public List<String> getPlatNums() {
-        return platNums;
+    public List<String> getPlateNums() {
+        return plateNums;
     }
 
-    public void setPlatNums(List<String> platNums) {
-        this.platNums = platNums;
+    public void setPlateNums(List<String> plateNums) {
+        this.plateNums = plateNums;
     }
 }

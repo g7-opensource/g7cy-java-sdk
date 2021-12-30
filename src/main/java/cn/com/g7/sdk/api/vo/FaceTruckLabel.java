@@ -13,20 +13,20 @@ public class FaceTruckLabel {
     /**
      * 车辆编号
      */
-    @JSONField(name = "plat_num")
-    private String platNum;
+    @JSONField(name = "plate_num")
+    private String plateNum;
 
     /**
      * 车辆标签
      */
     private String label;
 
-    public String getPlatNum() {
-        return platNum;
+    public String getPlateNum() {
+        return plateNum;
     }
 
-    public void setPlatNum(String platNum) {
-        this.platNum = platNum;
+    public void setPlateNum(String plateNum) {
+        this.plateNum = plateNum;
     }
 
     public String getLabel() {

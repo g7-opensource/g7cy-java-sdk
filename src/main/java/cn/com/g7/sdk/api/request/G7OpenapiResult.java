@@ -39,7 +39,7 @@ public class G7OpenapiResult<T> {
 		return code;
 	}
 
-	public G7OpenapiResult setCode(int code) {
+	public G7OpenapiResult<T> setCode(int code) {
 		this.code = code;
 		return this;
 	}
@@ -48,7 +48,7 @@ public class G7OpenapiResult<T> {
 		return msg;
 	}
 
-	public G7OpenapiResult setMsg(String msg) {
+	public G7OpenapiResult<T> setMsg(String msg) {
 		this.msg = msg;
 		return this;
 	}
@@ -57,7 +57,7 @@ public class G7OpenapiResult<T> {
 		return subCode;
 	}
 
-	public G7OpenapiResult setSubCode(int subCode) {
+	public G7OpenapiResult<T> setSubCode(int subCode) {
 		this.subCode = subCode;
 		return this;
 	}
@@ -66,7 +66,7 @@ public class G7OpenapiResult<T> {
 		return subMsg;
 	}
 
-	public G7OpenapiResult setSubMsg(String subMsg) {
+	public G7OpenapiResult<T> setSubMsg(String subMsg) {
 		this.subMsg = subMsg;
 		return this;
 	}
@@ -75,7 +75,7 @@ public class G7OpenapiResult<T> {
 		return reqId;
 	}
 
-	public G7OpenapiResult setReqId(String reqId) {
+	public G7OpenapiResult<T> setReqId(String reqId) {
 		this.reqId = reqId;
 		return this;
 	}
@@ -84,7 +84,7 @@ public class G7OpenapiResult<T> {
 		return data;
 	}
 
-	public G7OpenapiResult setData(T data) {
+	public G7OpenapiResult<T> setData(T data) {
 		this.data = data;
 		return this;
 	}
@@ -93,7 +93,7 @@ public class G7OpenapiResult<T> {
 		return throwable;
 	}
 
-	public G7OpenapiResult setThrowable(Throwable throwable) {
+	public G7OpenapiResult<T> setThrowable(Throwable throwable) {
 		this.throwable = throwable;
 		return this;
 	}

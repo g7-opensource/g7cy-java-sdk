@@ -30,16 +30,16 @@ import java.util.Map;
 public class G7OpenapiClient {
 
     /** 开放平台host，不同环境不一样*/
-    private String url;
+    private final String url;
 
     /** 认证accessKey*/
-    private String accessKey;
+    private final String accessKey;
 
     /** 认证accessSecret*/
-    private String accessSecret;
+    private final String accessSecret;
 
     /** 发起请求的具体实现类*/
-    private IRequest request;
+    private final IRequest request;
 
     public G7OpenapiClient(String url, String accessKey, String accessSecret, IRequest request) {
         this.url = url;
@@ -113,8 +113,7 @@ public class G7OpenapiClient {
         RequestContext context = buildContext(ApiEnum.TRUCK_LIST);
         context.setBody(JSON.toJSONString(req));
         Type type = new TypeReference<G7OpenapiResult<List<TruckListInfoResp>>>(){}.getType();
-        List<TruckListInfoResp> list =  this.request.request(context, type);
-        return list;
+        return this.request.request(context, type);
     }
 
     /**
@@ -585,8 +584,8 @@ public class G7OpenapiClient {
      * 根据设备查询车辆状态
      * 批量车辆状态查询，批量返回车辆状态包括定位、状态、温度、等等
      * http://openapi.huoyunren.com/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fdevice%2Ftruck%2Fcurrent_info_by_gpsno&method=GET
-     * @param req 车辆状态
-     * @return
+     * @param req - 设备信息
+     * @return - 车辆状态
      */
     public TruckCurrentInfoResp currentInfoByGpsNo(CurrentInfoByGpsNoReq req){
         RequestContext context = buildContext(ApiEnum.CURRENT_INFO_BY_GPSNO);
@@ -724,7 +723,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-创建人脸用户信息
-     * TODO 这里这个接口的介绍链接还没有
+     *
      * @param req - 创建人脸用户请求参数
      * @return FaceUserResp - 创建人脸用户返回信息
      */
@@ -802,7 +801,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-删除车辆标签
-     * TODO 这里这个接口的介绍链接还没有
+     *
      * @param req - 删除车辆标签请求参数
      * @return Void - null
      */
@@ -817,7 +816,7 @@ public class G7OpenapiClient {
 
     /**
      * 人脸识别-查询车辆标签
-     * TODO 这里这个接口的介绍链接还没有
+     *
      * @param req - 查询车辆标签请求参数
      * @return List<FaceTruckLabel> - 查询车辆标签返回信息
      */

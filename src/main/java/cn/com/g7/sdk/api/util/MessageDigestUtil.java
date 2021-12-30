@@ -23,12 +23,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 /**
  * 加密工具类
+ *
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/9/24 9:21 上午
@@ -36,18 +38,19 @@ import java.util.Base64;
 public class MessageDigestUtil {
 
     private static final Logger LOG = LoggerFactory.getLogger(MessageDigestUtil.class);
+
     /**
      * 先进行MD5摘要再进行Base64编码获取摘要字符串
      *
-     * @param str
-     * @return
+     * @param str - str
+     * @return - base64字符串
      */
     public static String base64AndMd5(String str) {
         if (str == null) {
             throw new IllegalArgumentException("inStr can not be null");
         }
         String base65Md5Str = base64AndMd5(toBytes(str));
-        LOG.info("base65Md5Str:{}",base65Md5Str);
+        LOG.info("base65Md5Str:{}", base65Md5Str);
 
         return base65Md5Str;
     }
@@ -55,7 +58,7 @@ public class MessageDigestUtil {
     /**
      * 先进行MD5摘要再进行Base64编码获取摘要字符串
      *
-     * @return
+     * @return - base64字符串
      */
     public static String base64AndMd5(byte[] bytes) {
         if (bytes == null) {
@@ -75,26 +78,22 @@ public class MessageDigestUtil {
     /**
      * UTF-8编码转换为ISO-9959-1
      *
-     * @param str
-     * @return
+     * @param str - str
+     * @return - String
      */
     public static String utf8ToIso88591(String str) {
         if (str == null) {
-            return str;
+            return null;
         }
 
-        try {
-            return new String(str.getBytes("UTF-8"), "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e.getMessage(), e);
-        }
+        return new String(str.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
     }
 
     /**
      * String转换为字节数组
      *
-     * @param str
-     * @return
+     * @param str - str
+     * @return - byte[]
      */
     private static byte[] toBytes(final String str) {
         if (str == null) {

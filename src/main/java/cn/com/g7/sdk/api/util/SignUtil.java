@@ -14,6 +14,7 @@ import java.util.TreeMap;
 
 /**
  * 签名工具
+ *
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/9/24 9:21 上午
@@ -24,18 +25,19 @@ public class SignUtil {
 
     /**
      * 计算签名
-     * @param secret APP密钥
-     * @param method HttpMethod
-     * @param path 请求的uri
+     *
+     * @param secret  APP密钥
+     * @param method  HttpMethod
+     * @param path    请求的uri
      * @param headers 请求头
      * @param queries 查询参数
-     * @param bodies RequestBody
+     * @param bodies  RequestBody
      * @return 签名后的字符串
      */
-    public static String sign(String secret, String method, String path, 
-    							Map<String, String> headers, 
-    							Map<String, String> queries,
-    							Map<String, String> bodies) {
+    public static String sign(String secret, String method, String path,
+                              Map<String, String> headers,
+                              Map<String, String> queries,
+                              Map<String, String> bodies) {
         try {
             Mac hmacSha256 = Mac.getInstance(ApiConstants.HMAC_SHA256);
             byte[] keyBytes = secret.getBytes(ApiConstants.ENCODING);
@@ -84,59 +86,61 @@ public class SignUtil {
 
     /**
      * 构建待签名Path+Query+BODY
-     * @param path 请求的uri
+     *
+     * @param path    请求的uri
      * @param queries 查询参数
-     * @param bodies RequestBody
+     * @param bodies  RequestBody
      * @return 待签名
      */
     private static String buildResource(String path, Map<String, String> queries, Map<String, String> bodies) {
-    	StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-    	if (!StringUtils.isEmpty(path)) {
-    	    if (path.startsWith(ApiConstants.PATH_CUSTOM)) {
-    	        path = path.replaceFirst(ApiConstants.PATH_CUSTOM, "");
+        if (!StringUtils.isEmpty(path)) {
+            if (path.startsWith(ApiConstants.PATH_CUSTOM)) {
+                path = path.replaceFirst(ApiConstants.PATH_CUSTOM, "");
             }
-    		sb.append(path);
+            sb.append(path);
         }
-        Map<String, String> sortMap = new TreeMap<String, String>();
+        Map<String, String> sortMap = new TreeMap<>();
         if (null != queries) {
-        	for (Map.Entry<String, String> query : queries.entrySet()) {
-        		if (!StringUtils.isEmpty(query.getKey()) && !StringUtils.isEmpty(query.getValue())) {
-        			sortMap.put(query.getKey(), query.getValue());
+            for (Map.Entry<String, String> query : queries.entrySet()) {
+                if (!StringUtils.isEmpty(query.getKey()) && !StringUtils.isEmpty(query.getValue())) {
+                    sortMap.put(query.getKey(), query.getValue());
                 }
-        	}
+            }
         }
-        
+
         if (null != bodies) {
-        	for (Map.Entry<String, String> body : bodies.entrySet()) {
-        		if (!StringUtils.isEmpty(body.getKey())) {
-        			sortMap.put(body.getKey(), body.getValue());
+            for (Map.Entry<String, String> body : bodies.entrySet()) {
+                if (!StringUtils.isEmpty(body.getKey())) {
+                    sortMap.put(body.getKey(), body.getValue());
                 }
-        	}
+            }
         }
-        
+
         StringBuilder sbParam = new StringBuilder();
         for (Map.Entry<String, String> item : sortMap.entrySet()) {
-    		if (!StringUtils.isEmpty(item.getKey())) {
-    			if (0 < sbParam.length()) {
-    				sbParam.append(ApiConstants.SPE3_CONNECT);
-    			}
-    			sbParam.append(item.getKey());
-    			if (!StringUtils.isEmpty(item.getValue())) {
-    				sbParam.append(ApiConstants.SPE4_EQUAL).append(item.getValue());
-    			}
+            if (!StringUtils.isEmpty(item.getKey())) {
+                if (0 < sbParam.length()) {
+                    sbParam.append(ApiConstants.SPE3_CONNECT);
+                }
+                sbParam.append(item.getKey());
+                if (!StringUtils.isEmpty(item.getValue())) {
+                    sbParam.append(ApiConstants.SPE4_EQUAL).append(item.getValue());
+                }
             }
-    	}
-        if (0 < sbParam.length()) {
-        	sb.append(ApiConstants.SPE5_QUESTION);
-        	sb.append(sbParam);
         }
-        
+        if (0 < sbParam.length()) {
+            sb.append(ApiConstants.SPE5_QUESTION);
+            sb.append(sbParam);
+        }
+
         return sb.toString();
     }
 
     /**
      * 构建待签名Http头
+     *
      * @param headers 请求中所有的Http头
      * @return 待签名Http头
      */
@@ -144,27 +148,23 @@ public class SignUtil {
         StringBuilder sb = new StringBuilder();
 
         if (null != headers) {
-
-            if (null != headers) {
-                Map<String, String> sortMap = new TreeMap<String, String>();
-                //对于header头值，转成小写了之后再排序
-                for (Map.Entry<String, String> header:headers.entrySet()){
-                    sortMap.put(header.getKey().toLowerCase(),header.getValue());
-                }
+            Map<String, String> sortMap = new TreeMap<>();
+            //对于header头值，转成小写了之后再排序
+            for (Map.Entry<String, String> header : headers.entrySet()) {
+                sortMap.put(header.getKey().toLowerCase(), header.getValue());
+            }
 
 
-                for (Map.Entry<String, String> header : sortMap.entrySet()) {
-                    if (isHeaderToSignByPrefix(header.getKey())) {
-                        sb.append(header.getKey());
-                        sb.append(ApiConstants.SPE2_COLON);
-                        if (!StringUtils.isEmpty(header.getValue())) {
-                            sb.append(header.getValue());
-                        }
-                        sb.append(ApiConstants.LF);
-
+            for (Map.Entry<String, String> header : sortMap.entrySet()) {
+                if (isHeaderToSignByPrefix(header.getKey())) {
+                    sb.append(header.getKey());
+                    sb.append(ApiConstants.SPE2_COLON);
+                    if (!StringUtils.isEmpty(header.getValue())) {
+                        sb.append(header.getValue());
                     }
-                }
+                    sb.append(ApiConstants.LF);
 
+                }
             }
         }
 
@@ -179,9 +179,6 @@ public class SignUtil {
             return false;
         }
 
-        if (headerName.toLowerCase().startsWith(ApiConstants.CA_HEADER_TO_SIGN_PREFIX_SYSTEM.toLowerCase())) {
-            return true;
-        }
-        return false;
+        return headerName.toLowerCase().startsWith(ApiConstants.CA_HEADER_TO_SIGN_PREFIX_SYSTEM.toLowerCase());
     }
 }

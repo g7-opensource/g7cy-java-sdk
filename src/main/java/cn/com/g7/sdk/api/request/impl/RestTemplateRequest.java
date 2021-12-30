@@ -40,7 +40,7 @@ public class RestTemplateRequest implements IRequest {
 
     private final Logger log = LoggerFactory.getLogger(RestTemplateRequest.class);
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public RestTemplateRequest(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -68,7 +68,7 @@ public class RestTemplateRequest implements IRequest {
         for (Map.Entry<String, String> entry : context.getHeaders().entrySet()) {
             httpHeaders.set(entry.getKey(), MessageDigestUtil.utf8ToIso88591(entry.getValue()));
         }
-        HttpEntity<String> request = new HttpEntity(StringUtils.isEmpty(context.getBody()) ? null : context.getBody(), httpHeaders);
+        HttpEntity<String> request = new HttpEntity<>(StringUtils.isEmpty(context.getBody()) ? null : context.getBody(), httpHeaders);
         try {
             ResponseEntity<String> entity = restTemplate.exchange(buildUrl(context.getUrl(), context.getUri(), context.getQuery()), context.getMethod().getMethod(), request, String.class);
             context.setStatus(entity.getStatusCodeValue());
@@ -77,7 +77,7 @@ public class RestTemplateRequest implements IRequest {
             JSONObject obj = JSON.parseObject(entity.getBody());
             G7OpenapiResult<T> result;
             Object data = obj.get("data");
-            if (data != null && data instanceof String) {
+            if (data instanceof String) {
                 result = obj.toJavaObject(new TypeReference<G7OpenapiResult<String>>(){});
                 if (StringUtils.isEmpty(result.getData())){
                     result.setData(null);
