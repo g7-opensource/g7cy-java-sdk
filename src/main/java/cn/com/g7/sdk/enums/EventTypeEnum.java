@@ -183,153 +183,284 @@ public enum EventTypeEnum {
     CPDW(3014, 0, 30014, 0, "车厢过道行人检测报警"),
 
     //FMS
+    /** 门磁事件 */
     GATE_IMPACT(250, 0, 25000, 0, "门磁事件"),
+    /** FMS急减速 */
     SLOW_DOWN_FMS(251, 0, 25001, 0, "FMS急减速"),
+    /** FMS紧急事件 */
     EMERGENCY_FMS(252, 0, 25002, 0, "FMS紧急事件"),
+    /** FMS急加速 */
     SPEED_UP_FMS(253, 0, 25003, 0, "FMS急加速"),
+    /** FMS风险入弯 */
     CURVE_OVER_SPEED_FMS(254, 0, 25004, 0, "FMS风险入弯"),
+    /** FMS超速预警 */
     SPEED_EARLY_FMS(255, 0, 25005, 0, "FMS超速预警"),
+    /** FMS超速报警 */
     OVER_SPEED_FMS(256, 0, 25006, 0, "FMS超速报警"),
+    /** FMS行驶断电报警 */
     POWER_OFF_FMS(257, 0, 25007, 0, "FMS行驶断电报警"),
+    /** FMS异常停车双闪烁报警 */
     STOP_DOUBLE_FLASH_FMS(258, 0, 25008, 0, "FMS异常停车双闪烁报警"),
+    /** FMS振动报警 */
     VIBRATION_FMS(259, 0, 25009, 0, "FMS振动报警"),
+    /** FMS熄火报警 */
     FIRE_OFF_FMS(260, 0, 25010, 0, "FMS熄火报警"),
+    /** FMS超时疲劳驾驶 */
     OVERTIME_TIRED_FMS(261, 0, 25011, 0, "FMS超时疲劳驾驶"),
+    /** FMS当日累计疲劳 */
     CUMULATIVE_TIRED_FMS(262, 0, 25012, 0, "FMS当日累计疲劳"),
+    /** FMS路口超速 */
     CROSSING_HIGH_SPEED_FMS(263, 0, 25013, 0, "FMS路口超速"),
+    /** FMS高速龟速行驶 */
     HIGHWAY_LOW_SPEED_FMS(264, 0, 25014, 0, "FMS高速龟速行驶"),
+    /** FMS急停事件 */
     STOP_FMS(265, 0, 25015, 0, "FMS急停事件"),
+    /** FMS左急转弯 */
     SHARP_LEFT_FMS(266, 0, 25016, 0, "FMS左急转弯"),
+    /** FMS右急转弯 */
     SHARP_RIGHT_FMS(267, 0, 25017, 0, "FMS右急转弯"),
+    /** 综合入侵事件 */
     GENERAL_INVADE_FMS(268, 0, 25018, 0, "综合入侵事件"),
+    /** 人员入侵事件 */
     PERSONNEL_INVADE_FMS(269, 0, 25019, 0, "人员入侵事件"),
+    /** 后翻或侧翻卸货事件 */
     BACK_OR_SIDE_ROLL_DISCHARGE(270, 0, 25020, 0, "后翻或侧翻卸货事件"),
+    /** 扭转/倾斜报警事件 */
     TORSION_TILT_ALARM_EVENT(271, 0, 25021, 0, "扭转/倾斜报警事件"),
+    /** 遮挡报警事件 */
     BLOCK_ALARM_EVENT(272, 0, 25022, 0, "遮挡报警事件"),
+    /** 任务监控时异常拆机报警事件 */
     ABNORMAL_DISASSEMBLY_ALARM_EVENT_DURING_TASK_MONITORING(273, 0, 25023, 0, "任务监控时异常拆机报警事件"),
+    /** 拆外壳报警事件 */
     DISASSEMBLE_THE_SHELL_ALARM_EVENT(274, 0, 25024, 0, "拆外壳报警事件"),
+    /** 待机状态结束进入调试状态 */
     END_OF_STANDBY_STATE_AND_ENTER_DEBUGGING_STATE(275, 0, 25025, 0, "待机状态结束进入调试状态"),
+    /** 结束调试状态进入任务监控状态 */
     END_DEBUGGING_STATE_AND_ENTER_TASK_MONITORING_STATE(276, 0, 25026, 0, "结束调试状态进入任务监控状态"),
+    /** 任务监控状态结束进入待机状态 */
     END_OF_TASK_MONITORING_STATE_AND_ENTER_STANDBY_STATE(277, 0, 25027, 0, "任务监控状态结束进入待机状态"),
+    /** 调试按键短按 */
     SHORT_PRESS_THE_DEBUG_BUTTON(278, 0, 25028, 0, "调试按键短按"),
+    /** 调试按键长按1.5秒 */
     LONG_PRESS_THE_DEBUG_BUTTON_FOR_ONE_POINT_FIVE_SECONDS(279, 0, 25029, 0, "调试按键长按1.5秒"),
+    /** 调试按键长按8秒 */
     LONG_PRESS_THE_DEBUG_BUTTON_FOR_EIGHT_SECONDS(280, 0, 25030, 0, "调试按键长按8秒"),
+    /** 定时动作拍照 */
     TIMED_ACTION_PHOTO(281, 0, 25031, 0, "定时动作拍照"),
 
+    /** 设备网络状态 */
     NETWORK_STATE(2, 0, 10002, 0, "设备网络状态"),
+    /** 区域超速报警 */
     AREA_OVER_SPEED(304, 0, 10005, 0, "区域超速报警"),
+    /** 疲劳驾驶第一次预警 */
     TIRED_EARLY_FIRST(13, 0, 10009, 0, "疲劳驾驶第一次预警"),
+    /** 疲劳驾驶第二次预警 */
     TIRED_EARLY_SECOND(14, 0, 10010, 0, "疲劳驾驶第二次预警"),
+    /** 遭窃车辆报警 */
     STEAL_CAR(16, 0, 10012, 0, "遭窃车辆报警"),
+    /** 遭窃车辆位置更新报警 */
     STEAL_CAR_POSITION(17, 0, 10013, 0, "遭窃车辆位置更新报警"),
+    /** EMSPTO状态 */
     EMS_PTO_STATE(23, 0, 10017, 0, "EMSPTO状态"),
+    /** 手动报警 */
     MANUAL_ALARM(27, 0, 10020, 0, "手动报警"),
+    /** DI在线状态 */
     DI_ONLINE_STATE(30, 0, 10021, 0, "DI在线状态"),
+    /** 电源电压过高报警 */
     HIGH_POWER(33, 0, 10024, 0, "电源电压过高报警"),
+    /** 电源电压过低报警 */
     LOW_POWER(34, 0, 10025, 0, "电源电压过低报警"),
+    /** 内部电池供电状态 */
     INTERNAL_POWER_UP(35, 0, 10026, 0, "内部电池供电状态"),
+    /** 内部电池充电状态 */
     INTERNAL_POWER_CHARGE(36, 0, 10027, 0, "内部电池充电状态"),
+    /** 内部电池充电失败 */
     INTERNAL_POWER_CHARGE_FAIL(37, 0, 10028, 0, "内部电池充电失败"),
+    /** SIM卡移除报警 */
     SIM_REMOVE(39, 0, 10030, 0, "SIM卡移除报警"),
+    /** 性能及健康检测 */
     HEALTH_TEST(41, 0, 10031, 0, "性能及健康检测"),
+    /** 主机温度过高报警 */
     MAIN_TMP_HIGH(42, 0, 10032, 0, "主机温度过高报警"),
+    /** 主机温度过低报警 */
     MAIN_TMP_LOW(43, 0, 10033, 0, "主机温度过低报警"),
 
+    /** 车辆侧翻报警 */
     ROLL_OVER(44, 0, 10034, 0, "车辆侧翻报警"),
+    /** 门状态 */
     DOOR_STATE(50, 0, 10036, 0, "门状态"),
+    /** 重要错误码 */
     ERROR_CODE(60, 0, 10041, 0, "重要错误码"),
+    /** SD卡已满事件 */
     SD_FULL(61, 0, 10042, 0, "SD卡已满事件"),
 
+    /** GPS定位状态 */
     GPS_LOCATION(62, 0, 10043, 0, "GPS定位状态"),
+    /** RTC时间故障 */
     RTC_TIME_ERROR(63, 0, 10044, 0, "RTC时间故障"),
+    /** 加速度传感器校准 */
     PLUS_SPEED_VERIFY(66, 0, 10045, 0, "加速度传感器校准"),
+    /** 角速度传感器校准 */
     CORNER_SPEED_VERIFY(67, 0, 10046, 0, "角速度传感器校准"),
 
+    /** 内部电池开关未打开 */
     POWER_NOT_OPEN(69, 0, 10048, 0, "内部电池开关未打开"),
+    /** 压缩机状态 */
     COMPRESSOR_STATE(70, 0, 10049, 0, "压缩机状态"),
+    /** 终端参数恢复出厂设置事件 */
     RECOVER_SETTING(71, 0, 10050, 0, "终端参数恢复出厂设置事件"),
+    /** 温度探头拔除报警事件 */
     T_PROBE_OFF(73, 0, 10052, 0, "温度探头拔除报警事件"),
+    /** GPS漂移 */
     GPS_DRIFT(74, 0, 10053, 0, "GPS漂移"),
+    /** GPS漂移预警 */
     GPS_EARLY_DRIFT(75, 0, 10054, 0, "GPS漂移预警"),
+    /** 停车未熄火报警事件 */
     STOP_NOT_TURN_OFF(76, 0, 10055, 0, "停车未熄火报警事件"),
+    /** GPRS模块复位事件 */
     GPRS_RESET(77, 0, 10056, 0, "GPRS模块复位事件"),
+    /** OTA备份结果事件 */
     OTA_BACKUP_RESULT(78, 0, 10057, 0, "OTA备份结果事件"),
+    /** 引擎状态 */
     ENGINE_STATE(79, 0, 10058, 0, "引擎状态"),
+    /** 事件管理器恢复默认事件 */
     EVENT_MANAGER_RESET(80, 0, 10059, 0, "事件管理器恢复默认事件"),
+    /** 蓄电池老化事件 */
     BATTERY_AGING(82, 0, 10060, 0, "蓄电池老化事件"),
+    /** EMS自动波特率检测事件 */
     EMS_BAUD_RATE_CHECK(83, 0, 10061, 0, "EMS自动波特率检测事件"),
+    /** EMS行程LOG事件 */
     EMS_LOG(84, 0, 10062, 0, "EMS行程LOG事件"),
+    /** SOCKET上行数据校验失败事件 */
     SOCKET_UP_FALL(85, 0, 10063, 0, "SOCKET上行数据校验失败事件"),
+    /** 除霜事件 */
     DEFROST(86, 0, 10064, 0, "除霜事件"),
+    /** 学习状态及GPS异常事件类 */
     GPS_ERROR(87, 0, 10065, 0, "学习状态及GPS异常事件类"),
+    /** Rfid司机未打卡通知事件 */
     DRIVER_NO_SIGN(88, 0, 10066, 0, "Rfid司机未打卡通知事件"),
+    /** 车辆运动状态 */
     MOVE_STATE(89, 0, 10067, 0, "车辆运动状态"),
+    /** 车辆载重状态 */
     LOAD_STATE(90, 0, 10068, 0, "车辆载重状态"),
 
+    /** EMS空滤堵塞报警 */
     EMS_AIR_FILTER_BLOCKING(93, 0, 10070, 0, "EMS空滤堵塞报警"),
+    /** EMS粗滤器水位报警 */
     EMS_WATER_LEVEL_WARNING(94, 0, 10071, 0, "EMS粗滤器水位报警"),
+    /** EMS左车门半锁报警 */
     EMS_LEFT_DOOR_HALF_LOCK(95, 0, 10072, 0, "EMS左车门半锁报警"),
+    /** EMS右车门半锁报警 */
     EMS_RIGHT_DOOR_HALF_LOCK(96, 0, 10073, 0, "EMS右车门半锁报警"),
+    /** EMS主驾驶位安全带状态 */
     EMS_MAIN_SAFETY_BELT(97, 0, 10074, 0, "EMS主驾驶位安全带状态"),
+    /** EMS副驾驶位安全带状态 */
     EMS_VICE_SAFETY_BELT(98, 0, 10075, 0, "EMS副驾驶位安全带状态"),
 
+    /** EMS机油压力过高报警 */
     EMS_OIL_STRESS_HIGH(99, 0, 10076, 0, "EMS机油压力过高报警"),
+    /** EMS燃油压力过高报警 */
     EMS_FUEL_STRESS_HIGH(100, 0, 10077, 0, "EMS燃油压力过高报警"),
+    /** EMS燃油压力过低报警 */
     EMS_FUEL_STRESS_LOW(1201, 0, 10078, 0, "EMS燃油压力过低报警"),
+    /** EMS ABS警告灯报警 */
     EMS_ABS_WARNING_LAMP(102, 0, 10079, 0, "EMS ABS警告灯报警"),
+    /** EMS电动车单体电池最低电压过低报警事件 */
     EMS_MONOMER_LOW_BATTERY(103, 0, 10080, 0, "EMS电动车单体电池最低电压过低报警事件"),
+    /** EMS电动车单体电池最高电压过高报警事件 */
     EMS_MONOMER_HIGH_BATTERY(104, 0, 10081, 0, "EMS电动车单体电池最高电压过高报警事件"),
 
+    /** EMS电动车单体电池最高温度过高报警事件 */
     EMS_HIGH_BATTERY_T(105, 0, 10082, 0, "EMS电动车单体电池最高温度过高报警事件"),
+    /** EMS电动车SOC过低预警事件 */
     EMS_SOC_EARLY_LOW(106, 0, 10083, 0, "EMS电动车SOC过低预警事件"),
+    /** EMS电动车SOC过低报警事件 */
     EMS_SOC_LOW(107, 0, 10084, 0, "EMS电动车SOC过低报警事件"),
+    /** EMS电动车控制器温度过高报警事件 */
     EMS_CONTROL_T_HIGH(108, 0, 10085, 0, "EMS电动车控制器温度过高报警事件"),
+    /** EMS电动车驱动电机温度过高报警事件 */
     EMS_motor_HIGH(109, 0, 10086, 0, "EMS电动车驱动电机温度过高报警事件"),
+    /** EMS电动车电池电压过低报警事件 */
     EMS_LOW_BATTERY(110, 0, 10087, 0, "EMS电动车电池电压过低报警事件"),
 
+    /** 485设备异常拔除或故障报警 */
     EMS_485_ERROR(111, 0, 10088, 0, "485设备异常拔除或故障报警"),
+    /** 485设备在线状态 */
     EMS_485L_ONLINE_STATE(112, 0, 10089, 0, "485设备在线状态"),
+    /** 主电未接报警 */
     EMS_POWER_MISSED(113, 0, 10090, 0, "主电未接报警"),
 
+    /** 医药配送行程事件 */
     MEDICAL_DELIVERY_SCHEDULE(116, 0, 10093, 0, "医药配送行程事件"),
+    /** BLUECAN_连接状态 */
     BLUE_CAN_CONNECTION_STATE(117, 0, 10094, 0, "BLUECAN_连接状态"),
+    /** BLUECAN_类事件 */
     BLUE_CAN_EVENT(118, 0, 10095, 0, "BLUECAN_类事件"),
+    /** BLUECAN行程强制结束事件 */
     BLUE_CAN_SCHEDULE_OVER(123, 0, 10099, 0, "BLUECAN行程强制结束事件"),
+    /** BLUECAN行程强制丢弃事件 */
     BLUE_CAN_SCHEDULE_LOST(124, 0, 10100, 0, "BLUECAN行程强制丢弃事件"),
+    /** EMS 行程状态事件 */
     EMS_SCHEDULE_STATE(139, 0, 10110, 0, "EMS 行程状态事件"),
 
+    /** 电动车充电事件 */
     ELECTRIC_CAR_CHARGING(141, 0, 10111, 0, "电动车充电事件"),
+    /** 电动车放电事件 */
     ELECTRIC_CAR_DISCHARGING(142, 0, 10112, 0, "电动车放电事件"),
+    /** 冷藏室回气温度传感器故障 */
     TEMPERATURE_SENSOR_ERROR(143, 0, 10113, 0, "冷藏室回气温度传感器故障"),
+    /** 冷藏室盘管温度传感器故障 */
     REFRIGERATOR_COIL_TEMPERATURE_SENSOR_ERROR(144, 0, 10114, 0, "冷藏室盘管温度传感器故障"),
 
+    /** 保险丝断开故障 */
     FUSE_OPEN_ERROR(145, 0, 10115, 0, "保险丝断开故障"),
 
+    /** 备电压缩机过载故障 */
     BACKUP_COMPRESSOR_OVERLOAD_ERROR(146, 0, 10116, 0, "备电压缩机过载故障"),
+    /** 备电频繁开关机故障 */
     BACKUP_POWER_SWITCH_ERROR(147, 0, 10117, 0, "备电频繁开关机故障"),
+    /** 交流电输入故障 */
     AC_INPUT_ERROR(148, 0, 10118, 0, "交流电输入故障"),
+    /** 备电压缩机过载或压缩机机内保护故障 */
     BACKUP_POWER_COMPRESSOR_OVERLOAD(149, 0, 10119, 0, "备电压缩机过载或压缩机机内保护故障"),
+    /** 高低压故障 */
     HIGH_LOW_VOLTAGE_ERROR(150, 0, 10120, 0, "高低压故障"),
 
+    /** 备电初始值d15 设置错误故障 */
     BACKUP_POWER_SETTING_ERROR(151, 0, 10121, 0, "备电初始值d15 设置错误故障"),
+    /** 市电接入状态 */
     MAINS_ACCESS_STATUS(152, 0, 10122, 0, "市电接入状态"),
 
-    EBS_EMERGENCY_BRAKE(156, 0, 10126, 0, "EBS 紧急制动报警事"),
-    EBS_ROLL_PROTECTION(157, 0, 10127, 0, "EBS 防侧翻保护报警事 件"),
+    /** EBS 紧急制动报警事件 */
+    EBS_EMERGENCY_BRAKE(156, 0, 10126, 0, "EBS 紧急制动报警事件"),
+    /** EBS 防侧翻保护报警事件 */
+    EBS_ROLL_PROTECTION(157, 0, 10127, 0, "EBS 防侧翻保护报警事件"),
+    /** BS 偏航控制激活报警 */
     EBS_YAW_CONTROL_ACTIVATION(158, 0, 10128, 0, "EBS 偏航控制激活报警"),
+    /** 车辆颠簸报警事件 */
     CAR_BUMPS(160, 0, 10130, 0, "车辆颠簸报警事件"),
+    /** 设备线束拔出报警事件 */
     WIRE_PULL_OUT(161, 0, 10131, 0, "设备线束拔出报警事件"),
+    /** 设备朝向报警事件 */
     CAR_ORIENTATION(162, 0, 10132, 0, "设备朝向报警事件"),
 
+    /** 部标GPS超速预警 */
     BUBIAO_OVER_SPEED_WARNING(6013, 0, 10133, 0, "部标GPS超速预警"),
+    /** 部标GPS疲劳驾驶预警 */
     BUBIAO_FATIGUE_DRIVING_WARNING(6014, 0, 10134, 0, "部标GPS疲劳驾驶预警"),
 
+    /** 货船开仓 */
     SHIP_DOOR_OPEN(290, 0, 60290, 0, "货船开仓"),
+    /** 货船闭仓 */
     SHIP_DOOR_CLOSE(291, 0, 60291, 0, "货船闭仓"),
 
+    /** FS01硬盘锁打开报警 */
     DISK_OPEN(100, 0, 11100, 0, "FS01硬盘锁打开报警"),
+    /** SD卡不存在 */
     SD_NOT_EXISTED(101, 0, 11101, 0, "SD卡不存在"),
+    /** SD卡无法存储或读取 */
     SD_NOT_STORAGE_OR_READ(102, 0, 11102, 0, "SD卡无法存储或读取"),
+    /** SD频繁格式化 */
     SD_FORMAT_TOO_FREQUENTLY(103, 0, 11103, 0, "SD频繁格式化");;
 
     /**
