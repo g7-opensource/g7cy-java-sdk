@@ -23,9 +23,12 @@
 
 - 配置参数（spring boot方式）
 ```properties
+# 开放平台地址
 g7.openapi.url=https://openapi.huoyunren.com
-g7.openapi.access-key=dev_accesskey
-g7.openapi.access-secret=dev_accesssecret
+# access_key
+g7.openapi.access-key=access_key
+# access_secret
+g7.openapi.access-secret=access_secret
 ```
 
 - 参数说明

@@ -25,6 +25,10 @@ import java.util.Map;
 /**
  * 接口调用客户端
  *
+ * 使用方式
+ * 1. 根据构造方法创建客户端bean：G7OpenapiClient（可以根据spring boot配置properties或自定义 new G7OpenapiClient(...))，详见README.md
+ * 2. 调用接口，每个 G7OpenapiClient 方法代表一个接口
+ *
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/9/17 1:56 下午
@@ -43,15 +47,19 @@ public class G7OpenapiClient {
     /** 发起请求的具体实现类*/
     private final IRequest request;
 
-    public G7OpenapiClient(String url, String accessKey, String accessSecret, IRequest request) {
-        this.url = url;
-        this.accessKey = accessKey;
-        this.accessSecret = accessSecret;
-        this.request = request;
-    }
-
     public G7OpenapiClient(String accessKey, String accessSecret) {
         this.url = ApiConstants.URL_ONLINE;
+        this.accessKey = accessKey;
+        this.accessSecret = accessSecret;
+        RestTemplate restTemplate = new RestTemplateBuilder()
+                .setReadTimeout(Duration.ofSeconds(ApiConstants.READ_TIMEOUT))
+                .setConnectTimeout(Duration.ofSeconds(ApiConstants.CONNECT_TIMEOUT))
+                .build();
+        this.request = new RestTemplateRequest(restTemplate);
+    }
+
+    public G7OpenapiClient(String url, String accessKey, String accessSecret) {
+        this.url = url;
         this.accessKey = accessKey;
         this.accessSecret = accessSecret;
         RestTemplate restTemplate = new RestTemplateBuilder()
@@ -72,17 +80,6 @@ public class G7OpenapiClient {
         this.request = new RestTemplateRequest(restTemplate);
     }
 
-    public G7OpenapiClient(String url, String accessKey, String accessSecret) {
-        this.url = url;
-        this.accessKey = accessKey;
-        this.accessSecret = accessSecret;
-        RestTemplate restTemplate = new RestTemplateBuilder()
-                .setReadTimeout(Duration.ofSeconds(ApiConstants.READ_TIMEOUT))
-                .setConnectTimeout(Duration.ofSeconds(ApiConstants.CONNECT_TIMEOUT))
-                .build();
-        this.request = new RestTemplateRequest(restTemplate);
-    }
-
     public G7OpenapiClient(String url, String accessKey, String accessSecret, Long connectTimeout, Long readTimeout) {
         this.url = url;
         this.accessKey = accessKey;
@@ -92,6 +89,13 @@ public class G7OpenapiClient {
                 .setConnectTimeout(Duration.ofSeconds(connectTimeout))
                 .build();
         this.request = new RestTemplateRequest(restTemplate);
+    }
+
+    public G7OpenapiClient(String url, String accessKey, String accessSecret, IRequest request) {
+        this.url = url;
+        this.accessKey = accessKey;
+        this.accessSecret = accessSecret;
+        this.request = request;
     }
 
     private RequestContext buildContext(ApiEnum api) {
