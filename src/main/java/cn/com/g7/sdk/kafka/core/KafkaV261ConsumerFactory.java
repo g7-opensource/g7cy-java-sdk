@@ -168,20 +168,7 @@ public class KafkaV261ConsumerFactory {
         while (true) {
             try {
                 if (context.getConfig().isStop()) {
-                    // 停止消费者
-                    log.info("poll stop:{}", context.getCode());
-                    try {
-                        // 清空未处理完的数据
-                        context.getRecordsQueue().clear();
-                        if (!isAutoCommit) {
-                            // 提交offset
-                            commit(context, kafkaConsumer, offsets);
-                        }
-                    } catch (Exception e) {
-                        log.error("commit failed when poll stop:{}", context.getCode(), e);
-                    }
-                    // 停止消费者
-                    kafkaConsumer.close();
+                    stop(context, kafkaConsumer, offsets, isAutoCommit);
                     // 停止拉取线程
                     break;
                 }
@@ -229,6 +216,24 @@ public class KafkaV261ConsumerFactory {
         }
     }
 
+    private void stop(KafkaConsumerContext context, KafkaConsumer<String, String> kafkaConsumer,
+                      Map<TopicPartition, OffsetAndMetadata> offsets, boolean isAutoCommit) {
+        // 停止消费者
+        log.info("poll stop:{}", context.getCode());
+        try {
+            // 清空未处理完的数据
+            context.getRecordsQueue().clear();
+            if (!isAutoCommit) {
+                // 提交offset
+                commit(context, kafkaConsumer, offsets);
+            }
+        } catch (Exception e) {
+            log.error("commit failed when poll stop:{}", context.getCode(), e);
+        }
+        // 停止消费者
+        kafkaConsumer.close();
+    }
+
     /**
      * 将拉取记录放入内存队列
      * @param context 消费者相关信息
@@ -241,7 +246,8 @@ public class KafkaV261ConsumerFactory {
                 try {
                     context.getRecordsQueue().put(record);
                 } catch (InterruptedException e) {
-                    log.warn("put to record queue failed:{}", record.value());
+                    log.warn("put to record queue failed:{}", record.value(), e);
+                    Thread.currentThread().interrupt();
                 }
             });
         } else {
@@ -290,10 +296,12 @@ public class KafkaV261ConsumerFactory {
                     process(context.getCode(), record);
                 }
             } catch (Throwable e) {
-                log.error("handle record exception:record:" + record.toString(), e);
+                log.error("handle record exception:record:" + (record == null ? "empty" : record.toString()), e);
             } finally {
                 // 数据处理完后记录偏移量。处理数据异常时会丢弃，需要处理数据的地方自行处理
-                offsets.put(new TopicPartition(record.topic(), record.partition()), new OffsetAndMetadata(record.offset() + 1));
+                if (record != null) {
+                    offsets.put(new TopicPartition(record.topic(), record.partition()), new OffsetAndMetadata(record.offset() + 1));
+                }
                 context.getProcessedCount().incrementAndGet();
             }
         }
@@ -417,6 +425,7 @@ public class KafkaV261ConsumerFactory {
             Thread.sleep(timeMillis);
         } catch (InterruptedException e) {
             log.error("sleep unknown exception", e);
+            Thread.currentThread().interrupt();
         }
     }
 

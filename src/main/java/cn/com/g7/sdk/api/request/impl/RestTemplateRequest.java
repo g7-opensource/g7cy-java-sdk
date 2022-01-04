@@ -118,7 +118,7 @@ public class RestTemplateRequest implements IRequest {
                 try {
                     paramBuilder.append(key).append("=").append(URLEncoder.encode(value, "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                    log.error("UnsupportedEncodingException", e);
                 }
             }
         });
