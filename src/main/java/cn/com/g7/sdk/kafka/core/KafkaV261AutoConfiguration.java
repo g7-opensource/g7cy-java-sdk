@@ -1,7 +1,7 @@
 package cn.com.g7.sdk.kafka.core;
 
-import cn.com.g7.sdk.kafka.consumer.KafkaMessageProcessor;
 import cn.com.g7.sdk.kafka.consumer.IMessageConsumer;
+import cn.com.g7.sdk.kafka.consumer.KafkaMessageProcessor;
 import org.apache.kafka.v261.clients.CommonClientConfigs;
 import org.apache.kafka.v261.clients.consumer.ConsumerConfig;
 import org.apache.kafka.v261.common.config.SaslConfigs;
@@ -79,7 +79,7 @@ public class KafkaV261AutoConfiguration {
         // 认证文件
         String truststore = System.getProperty(KafkaConstants.KAFKA_CLIENT_TRUST_STORE);
         if (StringUtils.isEmpty(truststore)) {
-            throw new RuntimeException("truststore file is empty, please add -D" + KafkaConstants.KAFKA_CLIENT_TRUST_STORE + " parameter");
+            throw new IllegalArgumentException("truststore file is empty, please add -D" + KafkaConstants.KAFKA_CLIENT_TRUST_STORE + " parameter");
         }
         config.getProps().putIfAbsent(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, truststore);
         // 密码跟文件对应的，不能随意修改

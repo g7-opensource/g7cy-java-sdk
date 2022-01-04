@@ -265,7 +265,7 @@ public class KafkaV261ConsumerFactory {
             // 将剩余不足单次批量处理的数据放入内存队列
             for (Map.Entry<String, List<ConsumerRecord<String, String>>> entry : recordMap.entrySet()) {
                 List<ConsumerRecord<String, String>> tempBatchRecords = entry.getValue();
-                if (tempBatchRecords.size() > 0) {
+                if (!CollectionUtils.isEmpty(tempBatchRecords)) {
                     context.getRecordsQueue().put(tempBatchRecords);
                 }
             }

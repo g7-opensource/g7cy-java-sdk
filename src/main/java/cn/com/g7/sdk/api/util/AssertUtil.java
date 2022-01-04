@@ -10,6 +10,10 @@ import cn.com.g7.sdk.api.G7OpenapiException;
  */
 public class AssertUtil {
 
+    private AssertUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * 不为空断言。如果为空，抛出统一异常进行处理
      * @param obj 判断对象

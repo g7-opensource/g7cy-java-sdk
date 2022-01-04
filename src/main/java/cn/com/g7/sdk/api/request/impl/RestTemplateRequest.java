@@ -92,7 +92,9 @@ public class RestTemplateRequest implements IRequest {
                 throw new G7OpenapiException(result.getSubMsg());
             }
 
-            log.info("openapi request success,use time:{} ms,context:{}", (System.currentTimeMillis() - start), JsonUtil.toJson(context));
+            if (log.isInfoEnabled()) {
+                log.info("openapi request success,use time:{} ms,context:{}", (System.currentTimeMillis() - start), JsonUtil.toJson(context));
+            }
 
             return  result.getData();
         } catch (G7OpenapiException e) {

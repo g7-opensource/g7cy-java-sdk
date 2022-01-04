@@ -1,10 +1,8 @@
 package cn.com.g7.sdk.api.util;
 
-import cn.com.g7.sdk.api.ApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -79,12 +77,8 @@ public class MessageDigestUtil {
      */
     private static byte[] toBytes(final String str) {
         if (str == null) {
-            return null;
+            return new byte[]{};
         }
-        try {
-            return str.getBytes(ApiConstants.ENCODING);
-        } catch (final UnsupportedEncodingException e) {
-            throw new RuntimeException(e.getMessage(), e);
-        }
+        return str.getBytes(StandardCharsets.UTF_8);
     }
 }
