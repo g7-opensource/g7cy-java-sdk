@@ -7,12 +7,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
- * IoT消息抽象处理
+ * IoT消息状态抽象处理
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/10/8 11:14 上午
  */
-public abstract class AbstractIotMsgConsumer implements IMessageConsumer {
+public abstract class AbstractIotMsgStatusConsumer implements IMessageConsumer {
 
     @Override
     public String code() {
