@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.com.g7.sdk.kafka.core.KafkaV261AutoConfiguration,\
+cn.com.g7.sdk.api.OpenapiAutoConfiguration
