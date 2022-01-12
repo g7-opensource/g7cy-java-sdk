@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
- * 平台事件抽象处理
+ * 平台事件抽象处理,事件类型（event_type）详见{@link cn.com.g7.sdk.kafka.enums.PlatformEventEnum}
  * @author dengfuwei
  * @version 1.0.0
  * @date 2022/1/12 3:21 下午
