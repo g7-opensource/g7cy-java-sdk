@@ -79,7 +79,7 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 ```
 
 ### Kafka消费数据使用说明(spring boot方式)
-- 安装kafka-client定制包到私有仓库，jar包和源码包在resources/lib目录
+- 安装kafka-client定制包到私有仓库，jar包和源码包在resources/lib目录，版本号：2.6.3.1
 - 依赖jar包
 
 ```xml
@@ -92,8 +92,8 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
   
   <dependency>
       <groupId>cn.com.g7</groupId>
-      <artifactId>kafka-clients-v2.6.1</artifactId>
-      <version>${kafka-clients-v261.version}</version>
+      <artifactId>kafka-clients</artifactId>
+      <version>2.6.3.1</version>
       <exclusions>
           <exclusion>
               <groupId>org.apache.kafka</groupId>
@@ -114,7 +114,7 @@ g7.kafka.access-secret=dev_accesssecret
 
 - 增加启动参数(避免中文路径，注意修改文件路径)
 ```shell
--DKAFKA_CLIENT_TRUST_STORE=-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk-example/src/main/resources/kafka/kafka.client.truststore.jks
+-DKAFKA_CLIENT_TRUST_STORE=-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk/src/main/resources/kafka/kafka.client.truststore.jks
 ```
 
 - 继承要订阅的数据处理类，如定位数据(所有抽象类：cn.com.g7.sdk.kafka.consumer.*)
