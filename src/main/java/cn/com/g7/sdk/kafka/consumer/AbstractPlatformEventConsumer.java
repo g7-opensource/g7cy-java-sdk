@@ -7,16 +7,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
- * ADAS事件抽象处理,事件类型（event_type）详见{@link cn.com.g7.sdk.kafka.enums.AdasEventEnum}
+ * 平台事件抽象处理,事件类型（event_type）详见{@link cn.com.g7.sdk.kafka.enums.PlatformEventEnum}
  * @author dengfuwei
  * @version 1.0.0
- * @date 2021/10/8 11:14 上午
+ * @date 2022/1/12 3:21 下午
  */
-public abstract class AbstractAdasConsumer implements IMessageConsumer {
+public abstract class AbstractPlatformEventConsumer implements IMessageConsumer {
 
     @Override
     public String code() {
-        return DataCodeEnum.ADAS.getCode();
+        return DataCodeEnum.PLATFORM_EVENT.getCode();
     }
 
     @Override

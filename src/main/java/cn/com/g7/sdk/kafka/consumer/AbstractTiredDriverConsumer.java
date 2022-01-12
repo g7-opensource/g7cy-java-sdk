@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
- * 司机疲劳事件抽象处理
+ * 司机疲劳事件抽象处理,事件类型（event_type）详见{@link cn.com.g7.sdk.kafka.enums.DriverTiredEventEnum}
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/10/8 11:14 上午
