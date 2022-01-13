@@ -1,8 +1,8 @@
 package cn.com.g7.sdk.kafka.core;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.kafka.v261.clients.consumer.*;
-import org.apache.kafka.v261.common.TopicPartition;
+import org.apache.kafka.g7.clients.consumer.*;
+import org.apache.kafka.g7.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;

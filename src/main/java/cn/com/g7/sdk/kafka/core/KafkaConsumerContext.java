@@ -2,9 +2,9 @@ package cn.com.g7.sdk.kafka.core;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.apache.kafka.v261.clients.consumer.KafkaConsumer;
-import org.apache.kafka.v261.clients.consumer.OffsetAndMetadata;
-import org.apache.kafka.v261.common.TopicPartition;
+import org.apache.kafka.g7.clients.consumer.KafkaConsumer;
+import org.apache.kafka.g7.clients.consumer.OffsetAndMetadata;
+import org.apache.kafka.g7.common.TopicPartition;
 
 import java.util.List;
 import java.util.Map;

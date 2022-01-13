@@ -6,7 +6,7 @@
 
     <groupId>cn.com.g7</groupId>
     <artifactId>g7cy-java-sdk</artifactId>
-    <version>v20220106-SNAPSHOT</version>
+    <version>v20220112-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,15 +16,15 @@
         <slf4j.version>1.7.30</slf4j.version>
         <spring-framework.version>5.2.7.RELEASE</spring-framework.version>
         <spring-boot.version>2.2.8.RELEASE</spring-boot.version>
-        <kafka-clients-v261.version>2.6.1.1</kafka-clients-v261.version>
+        <kafka-clients.version>2.6.3.1</kafka-clients.version>
         <junit.version>1.5.1</junit.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>cn.com.g7</groupId>
-            <artifactId>kafka-clients-v2.6.1</artifactId>
-            <version>${kafka-clients-v261.version}</version>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka-clients.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.kafka</groupId>

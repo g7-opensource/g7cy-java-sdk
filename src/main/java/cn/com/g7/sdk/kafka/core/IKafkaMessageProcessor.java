@@ -1,7 +1,7 @@
 package cn.com.g7.sdk.kafka.core;
 
 import cn.com.g7.sdk.kafka.enums.DataCodeEnum;
-import org.apache.kafka.v261.clients.consumer.ConsumerRecord;
+import org.apache.kafka.g7.clients.consumer.ConsumerRecord;
 
 import java.util.List;
 
