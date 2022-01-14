@@ -14,6 +14,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -304,6 +305,7 @@ public class G7OpenapiClientOpTest {
         FaceUserDeleteOrQueryReq req = new FaceUserDeleteOrQueryReq();
         req.setOrgcode("2017B6");
         req.setUserId("0f2e01caa4ea4442a230b4e39dc4854e");
+
         FaceUserResp faceUserResp = g7OpenapiClient.faceUserQuery(req);
         AssertUtil.notNull(faceUserResp);
     }
@@ -378,6 +380,24 @@ public class G7OpenapiClientOpTest {
         plateNums.add("川A12345");
         req.setPlateNums(plateNums);
         g7OpenapiClient.faceTruckLabelDelete(req);
+    }
+
+    @Test
+    public void batchSendVoiceTest() {
+        // 创建请求bean
+        RestTemplate restTemplate = new RestTemplateBuilder().build();
+        IRequest request = new RestTemplateRequest(restTemplate);
+        // 创建开放平台接口客户端
+        String accessKey = "elfyik";
+        String accessSecret = "dszpkdnu1jwszafavcnfuzktsujjvrvm";
+        G7OpenapiClient g7OpenapiClient = new G7OpenapiClient(url, accessKey, accessSecret, request);
+        List<MsgBatchSendVoiceReq> reqList = new ArrayList<>();
+        MsgBatchSendVoiceReq req = new MsgBatchSendVoiceReq();
+        req.setTxt("你好");
+        req.setPlateNums(Arrays.asList("川A11112"));
+        reqList.add(req);
+        List<MsgCommonVoiceSendResp> msgCommonVoiceSendRespList = g7OpenapiClient.batchSendVoice(reqList);
+        log.info("rsp:{}", JsonUtil.toJson(msgCommonVoiceSendRespList));
     }
 
 }

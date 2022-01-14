@@ -870,4 +870,17 @@ public class G7OpenapiClient {
         return this.request.request(context, type);
     }
 
+    /**
+     * 批量下发语音接口（多信息多车辆）
+     * @param req 批量消息下发请求参数
+     * @return    消息下发 响应参数
+     */
+    public List<MsgCommonVoiceSendResp> batchSendVoice(List<MsgBatchSendVoiceReq> req) {
+        RequestContext context = buildContext(ApiEnum.BATCH_SEND_VOICE);
+        AssertUtil.notNull(req);
+        context.setBody(JSON.toJSONString(req));
+        Type type = new TypeReference<G7OpenapiResult<List<MsgCommonVoiceSendResp>>>() {}.getType();
+        return this.request.request(context, type);
+    }
+
 }
