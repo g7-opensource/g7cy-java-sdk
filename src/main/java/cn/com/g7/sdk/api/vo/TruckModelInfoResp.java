@@ -5,7 +5,6 @@ import com.alibaba.fastjson.annotation.JSONField;
 /**
  *
  * 车辆车型详情V1.0
- * todo 返回值结构与开放平台不一致
  * @author liwenlang
  * @version 1.0.0
  * @date 2021/10/11 16:49
@@ -47,27 +46,27 @@ public class TruckModelInfoResp {
     @JSONField(name = "total_mass")
     private String totalMass;
 
-    /** 外廓长 单位m todo 单位有误*/
+    /** 外廓长 单位m  */
     @JSONField(name = "truck_length")
     private String truckLength;
 
-    /** 外廓宽 单位m todo 单位有误*/
+    /** 外廓宽 单位m  */
     @JSONField(name = "truck_width")
     private String truckWidth;
 
-    /** 外廓高 单位m todo 单位有误*/
+    /** 外廓高 单位m  */
     @JSONField(name = "truck_high")
     private String truckHigh;
 
-    /** 车厢长 单位m todo 单位有误*/
+    /** 车厢长 单位m  */
     @JSONField(name = "compartment_length")
     private String compartmentLength;
 
-    /** 车厢宽 单位m todo 单位有误*/
+    /** 车厢宽 单位m  */
     @JSONField(name = "compartment_width")
     private String compartmentWidth;
 
-    /** 车厢高 单位m todo 单位有误*/
+    /** 车厢高 单位m  */
     @JSONField(name = "compartment_high")
     private String compartmentHigh;
 

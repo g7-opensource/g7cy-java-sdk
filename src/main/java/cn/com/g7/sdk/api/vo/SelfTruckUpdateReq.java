@@ -17,9 +17,7 @@ public class SelfTruckUpdateReq {
     /** 车辆id*/
     private String id;
 
-    /**  是否车头,1车头,2挂车,默认1 {@link cn.com.g7.sdk.api.enums.TruckHeadStockEnum}
-     * todo 属性类型需要根据实际情况调整 增加车辆接口与修改接口不一致
-     * */
+    /**  是否车头,1车头,2挂车,默认1 {@link cn.com.g7.sdk.api.enums.TruckHeadStockEnum}*/
     @JSONField(name = "isheadstock")
     private Integer isHeadStock;
 
