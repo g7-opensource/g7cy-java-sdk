@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class EventQueryReq {
 
-    /** 根据车辆，司机，机构查询事件 TODO 字段类型不一致*/
+    /** 根据车辆，司机，机构查询事件 */
     private List<String> orgcodes;
 
     /** 设备号，以逗号分隔*/

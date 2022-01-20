@@ -9,7 +9,7 @@ package cn.com.g7.sdk.api.vo;
 public class DriverListCountResp {
 
 
-    /** 只有参数设置get_count == 1时，才返回 todo 开放平台字段缺失*/
+    /** 只有参数设置get_count == 1时，才返回 */
     private Integer total;
 
     public Integer getTotal() {

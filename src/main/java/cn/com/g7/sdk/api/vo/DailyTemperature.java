@@ -23,7 +23,7 @@ public class DailyTemperature {
     /** 设备号*/
     private Integer gpsno;
 
-    /**纬度  TODO 备注有错别字*/
+    /**纬度 */
     private Double lat;
 
     /** 经度*/

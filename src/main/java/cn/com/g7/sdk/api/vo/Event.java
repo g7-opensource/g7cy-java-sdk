@@ -7,8 +7,6 @@ import java.util.Map;
 
 /**
  * 事件信息
- *http://openapi.huoyunren.com/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fdevice%2Fevent%2Fquery_event&method=POST
- * TODO 字段缺失较多
  * @author liwenlang
  * @version 1.0.0
  * @date 2021/11/8 15:04

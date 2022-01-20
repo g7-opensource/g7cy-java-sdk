@@ -10,28 +10,31 @@ import java.util.List;
  */
 public class ProbeInfo {
 
-    /**便携式 */
+    /**便携式 光感(单位:LUX)*/
     private Double t0Light;
 
-    /**便携式 告警类型*/
-    private List<Object> t0AlarmTypes;
+    /**
+     * 便携式 告警类型 报警列表：1高温预警，2高温报警，3温度传感器异常报警，4高湿度预警，5高湿度报警，6湿度传感器异常报警，7电量报警，8光感报警，
+     * 9其他报警，10低温预警，11低温报警，12低湿度预警，13低湿度报警，14设备开机报警，15设备关机报警，16手动开关状态，17温度湿度预警报警总开关状态，18低功耗状态，19任务状态，20重启，21外电断开
+     */
+    private List<Integer> t0AlarmTypes;
 
-    /**便携式 温度*/
+    /**便携式 温度(单位:℃)*/
     private Double t0Temperature;
 
     /**便携式 告警状态*/
     private Double t0AlarmStatus;
 
-    /**便携式 湿度*/
+    /**便携式 探头0湿度 (单位:%RH)*/
     private Double t0Humidity;
 
-    /**固定式 温度*/
+    /**固定式 温度(单位:℃)*/
     private Double t1Temperature;
 
-    /**固定式 湿度状态*/
+    /**固定式 探头1湿度告警状态 */
     private String t1HumidityAlarmStatus;
 
-    /**固定式 温度告警状态*/
+    /**固定式 探头1湿度告警状态*/
     private Double t1TemperatureAlarmStatus;
 
     public Double getT0Light() {
@@ -43,11 +46,11 @@ public class ProbeInfo {
         return this;
     }
 
-    public List<Object> getT0AlarmTypes() {
+    public List<Integer> getT0AlarmTypes() {
         return t0AlarmTypes;
     }
 
-    public ProbeInfo setT0AlarmTypes(List<Object> t0AlarmTypes) {
+    public ProbeInfo setT0AlarmTypes(List<Integer> t0AlarmTypes) {
         this.t0AlarmTypes = t0AlarmTypes;
         return this;
     }

@@ -127,6 +127,9 @@ public enum ApiEnum {
 
     /** 人脸识别-车辆信息查询*/
     FACE_DETECT_TRUCK_LABEL_QUERY("/v1/api/truck/label/query", MethodEnum.POST_BODY),
+
+    /** 批量下发语音接口（多信息多车辆）*/
+    BATCH_SEND_VOICE("/v1/api/message/batch_send_voice", MethodEnum.POST_BODY),
     ;
 
     /** 接口地址*/
