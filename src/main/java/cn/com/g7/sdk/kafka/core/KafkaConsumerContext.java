@@ -2,10 +2,9 @@ package cn.com.g7.sdk.kafka.core;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.apache.kafka.v261.clients.consumer.KafkaConsumer;
-import org.apache.kafka.v261.clients.consumer.OffsetAndMetadata;
-import org.apache.kafka.v261.common.TopicPartition;
-import org.springframework.util.CollectionUtils;
+import org.apache.kafka.g7.clients.consumer.KafkaConsumer;
+import org.apache.kafka.g7.clients.consumer.OffsetAndMetadata;
+import org.apache.kafka.g7.common.TopicPartition;
 
 import java.util.List;
 import java.util.Map;
@@ -107,16 +106,5 @@ public class KafkaConsumerContext {
 
     public void setProcessedCount(AtomicLong processedCount) {
         this.processedCount = processedCount;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        if (processorExecutor != null && !processorExecutor.isShutdown()) {
-            processorExecutor.shutdown();
-        }
-        if (!CollectionUtils.isEmpty(kafkaConsumers)) {
-            kafkaConsumers.forEach(KafkaConsumer::close);
-        }
-        super.finalize();
     }
 }

@@ -22,6 +22,10 @@ public enum DataCodeEnum {
     ADAS("adas"),
     /** 人脸识别响应数据数据*/
     FACE_DETECT_RESPONSE("topic_face_detect_response"),
+    /** 语音下发状态消息*/
+    IOT_MSG_STATUS_VOICE("iot_msg_status_voice"),
+    /** 平台事件（部分）*/
+    PLATFORM_EVENT("platform_event"),
     ;
 
     /** 编号*/

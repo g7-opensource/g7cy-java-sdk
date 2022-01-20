@@ -11,13 +11,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class OpenapiProperties {
 
     /** url*/
-    private final String url = ApiConstants.URL_ONLINE;
+    private String url = ApiConstants.URL_ONLINE;
 
     /** accessKey*/
     private String accessKey;
 
     /** accessSecret*/
     private String accessSecret;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getAccessKey() {
         return accessKey;

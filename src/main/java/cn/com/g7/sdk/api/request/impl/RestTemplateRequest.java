@@ -92,7 +92,9 @@ public class RestTemplateRequest implements IRequest {
                 throw new G7OpenapiException(result.getSubMsg());
             }
 
-            log.info("openapi request success,use time:{} ms,context:{}", (System.currentTimeMillis() - start), JsonUtil.toJson(context));
+            if (log.isInfoEnabled()) {
+                log.info("openapi request success,use time:{} ms,context:{}", (System.currentTimeMillis() - start), JsonUtil.toJson(context));
+            }
 
             return  result.getData();
         } catch (G7OpenapiException e) {
@@ -118,7 +120,7 @@ public class RestTemplateRequest implements IRequest {
                 try {
                     paramBuilder.append(key).append("=").append(URLEncoder.encode(value, "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                    log.error("UnsupportedEncodingException", e);
                 }
             }
         });

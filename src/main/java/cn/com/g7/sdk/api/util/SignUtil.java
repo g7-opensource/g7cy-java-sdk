@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Map;
 import java.util.TreeMap;
@@ -40,12 +41,12 @@ public class SignUtil {
                               Map<String, String> bodies) {
         try {
             Mac hmacSha256 = Mac.getInstance(ApiConstants.HMAC_SHA256);
-            byte[] keyBytes = secret.getBytes(ApiConstants.ENCODING);
+            byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
             hmacSha256.init(new SecretKeySpec(keyBytes, 0, keyBytes.length, ApiConstants.HMAC_SHA256));
 
             String stringToSign = buildStringToSign(method, path, headers, queries, bodies);
 
-            String sign = Base64.getEncoder().encodeToString(hmacSha256.doFinal(stringToSign.getBytes(ApiConstants.ENCODING)));
+            String sign = Base64.getEncoder().encodeToString(hmacSha256.doFinal(stringToSign.getBytes(StandardCharsets.UTF_8)));
             if (log.isDebugEnabled()) {
                 log.debug("sign:{} -> {}", stringToSign, sign);
             }

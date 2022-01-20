@@ -506,7 +506,7 @@ public enum EventTypeEnum {
     /** EMS电动车控制器温度过高报警事件 */
     EMS_CONTROL_T_HIGH(108, 0, 10085, 0, "EMS电动车控制器温度过高报警事件"),
     /** EMS电动车驱动电机温度过高报警事件 */
-    EMS_motor_HIGH(109, 0, 10086, 0, "EMS电动车驱动电机温度过高报警事件"),
+    EMS_MOTOR_HIGH(109, 0, 10086, 0, "EMS电动车驱动电机温度过高报警事件"),
     /** EMS电动车电池电压过低报警事件 */
     EMS_LOW_BATTERY(110, 0, 10087, 0, "EMS电动车电池电压过低报警事件"),
 

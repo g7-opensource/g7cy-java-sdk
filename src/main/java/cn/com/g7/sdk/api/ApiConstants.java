@@ -6,7 +6,11 @@ package cn.com.g7.sdk.api;
  * @version 1.0.0
  * @date 2021/9/17 1:56 下午
  */
-public class ApiConstants {
+public final class ApiConstants {
+
+    private ApiConstants() {
+        throw new IllegalStateException("Illegal operation");
+    }
 
     /** 线上环境开放平台接口host*/
     public static final String URL_ONLINE = "https://openapi.huoyunren.com";
@@ -16,9 +20,6 @@ public class ApiConstants {
 
     /** 签名算法HmacSha256 */
     public static final String HMAC_SHA256 = "HmacSHA256";
-
-    /** 编码UTF-8 */
-    public static final String ENCODING = "UTF-8";
 
     /** 签名头的前缀*/
     public static final String AUTH_PREFIX = "g7ac";
