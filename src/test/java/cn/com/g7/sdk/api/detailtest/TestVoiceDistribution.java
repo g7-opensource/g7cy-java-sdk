@@ -48,11 +48,15 @@ public class TestVoiceDistribution {
 //                    , "手AFM033", "开ASM001", "CESHI9", "粤B11160"));
 //            reqList.add(req);
 //        }
+        List<String> strings = Arrays.asList("川A11112", "干B11116", "GREAT02", "登A00003", "开AFM029S", "川A33322", "川A11112", "干B11116", "GREAT02", "登A00003", "开AFM029S", "川A33322");
+        for (String string : strings) {
+            MsgBatchSendVoiceReq req = new MsgBatchSendVoiceReq();
+            req.setTxt("你已疲劳驾驶,请注意安全!");
+            req.setCustomize("请注意安全!请注意安全!请注意安全!请注意安全!");
+            req.setPlateNum(string);
+            reqList.add(req);
+        }
 
-        MsgBatchSendVoiceReq req = new MsgBatchSendVoiceReq();
-        req.setTxt("你已疲劳驾驶,请注意安全!");
-        req.setPlateNums(Arrays.asList("川A11112", "干B11116", "GREAT02", "登A00003", "开AFM029S", "川A33322","川A11112", "干B11116", "GREAT02", "登A00003", "开AFM029S", "川A33322"));
-        reqList.add(req);
 
 //        MsgBatchSendVoiceReq req = new MsgBatchSendVoiceReq();
 //        req.setTxt("你已疲劳驾驶,请注意安全!");

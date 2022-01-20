@@ -52,6 +52,11 @@ public class MsgCommonVoiceSendResp {
      */
     private String txt;
 
+    /**
+     * 请求方自定义内容（把它们请求过来的直接响应回去）
+     */
+    private String customize;
+
     public String getImei() {
         return imei;
     }
@@ -121,6 +126,15 @@ public class MsgCommonVoiceSendResp {
 
     public MsgCommonVoiceSendResp setTxt(String txt) {
         this.txt = txt;
+        return this;
+    }
+
+    public String getCustomize() {
+        return customize;
+    }
+
+    public MsgCommonVoiceSendResp setCustomize(String customize) {
+        this.customize = customize;
         return this;
     }
 }

@@ -197,9 +197,7 @@ public class G7OpenapiClientOpTest {
         Assertions.assertNotNull(operationCommonResult);
     }
 
-
     /**
-     * todo  接口业务异常
      * @throws Exception
      */
     @Test
@@ -225,11 +223,7 @@ public class G7OpenapiClientOpTest {
         Assertions.assertNotNull(markerCreatRsp);
     }
 
-
-
-
     /**
-     * todo  接口业务异常
      * @throws Exception
      */
     @Test
@@ -394,7 +388,7 @@ public class G7OpenapiClientOpTest {
         List<MsgBatchSendVoiceReq> reqList = new ArrayList<>();
         MsgBatchSendVoiceReq req = new MsgBatchSendVoiceReq();
         req.setTxt("你好");
-        req.setPlateNums(Arrays.asList("川A11112"));
+        req.setPlateNum("川A11112");
         reqList.add(req);
         List<MsgCommonVoiceSendResp> msgCommonVoiceSendRespList = g7OpenapiClient.batchSendVoice(reqList);
         log.info("rsp:{}", JsonUtil.toJson(msgCommonVoiceSendRespList));
