@@ -1,13 +1,9 @@
 package cn.com.g7.sdk.api.detailtest;
 
 import cn.com.g7.sdk.api.G7OpenapiClient;
-import cn.com.g7.sdk.api.G7OpenapiClientTest;
 import cn.com.g7.sdk.api.request.IRequest;
 import cn.com.g7.sdk.api.request.impl.RestTemplateRequest;
-import cn.com.g7.sdk.api.util.AssertUtil;
 import cn.com.g7.sdk.api.util.JsonUtil;
-import cn.com.g7.sdk.api.vo.FaceTruckLabel;
-import cn.com.g7.sdk.api.vo.FaceTruckLabelCreateReq;
 import cn.com.g7.sdk.api.vo.MsgBatchSendVoiceReq;
 import cn.com.g7.sdk.api.vo.MsgCommonVoiceSendResp;
 import org.junit.jupiter.api.Test;
