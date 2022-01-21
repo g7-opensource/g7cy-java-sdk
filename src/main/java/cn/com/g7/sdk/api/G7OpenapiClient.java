@@ -889,4 +889,21 @@ public class G7OpenapiClient {
         return this.request.request(context, type);
     }
 
+    /**
+     * 消息下发结果查询
+     * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fdevice%2Fmessage%2Fsend_result&method=GET&id=53
+     *
+     * @param messageId 消息id
+     * @return    消息下发结果
+     */
+    public MessageSendResultResp messageSendResult(String messageId) {
+        RequestContext context = buildContext(ApiEnum.MESSAGE_SEND_RESULT);
+        AssertUtil.notEmpty(messageId);
+        Map<String, String> query = new HashMap<>(1);
+        query.put("message_id", messageId);
+        context.setQuery(query);
+        Type type = new TypeReference<G7OpenapiResult<MessageSendResultResp>>() {}.getType();
+        return this.request.request(context, type);
+    }
+
 }
