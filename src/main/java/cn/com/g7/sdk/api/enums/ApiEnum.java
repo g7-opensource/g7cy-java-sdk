@@ -130,6 +130,9 @@ public enum ApiEnum {
 
     /** 批量下发语音接口（多信息多车辆）*/
     BATCH_SEND_VOICE("/v1/api/message/batch_send_voice", MethodEnum.POST_BODY),
+
+    /** 消息下发结果查询 */
+    MESSAGE_SEND_RESULT("/v1/device/message/send_result", MethodEnum.GET),
     ;
 
     /** 接口地址*/
