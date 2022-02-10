@@ -20,11 +20,11 @@ public class IotMsgStatus {
     @JSONField(name = "message_id")
     private Long messageId;
 
-    /** 来源*/
-    private String source;
-
     /** 状态：{@link cn.com.g7.sdk.kafka.enums.IotMsgStatusEnum}*/
     private Integer status;
+
+    /** 详细状态：{@link cn.com.g7.sdk.kafka.enums.IotMsgDetailEnum}*/
+    private Integer detail;
 
     /** 更新时间*/
     @JSONField(name = "update_time")
@@ -54,20 +54,20 @@ public class IotMsgStatus {
         this.messageId = messageId;
     }
 
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Integer detail) {
+        this.detail = detail;
     }
 
     public Long getUpdateTime() {
