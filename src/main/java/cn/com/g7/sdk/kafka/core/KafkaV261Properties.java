@@ -24,6 +24,9 @@ public class KafkaV261Properties {
     /** 密码*/
     private String accessSecret;
 
+    /** 集群编号，如果配置值，会拼接到消费组的前面.需要提前配置消费组授权才能使用*/
+    private String cluster;
+
     /** kafkaBroker环境 默认正式*/
     private String kafkaBroker = KafkaConstants.KAFKA_BROKER;
 
@@ -188,6 +191,14 @@ public class KafkaV261Properties {
 
     public void setAccessSecret(String accessSecret) {
         this.accessSecret = accessSecret;
+    }
+
+    public String getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
     }
 
     public String getKafkaBroker() {
