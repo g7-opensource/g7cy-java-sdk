@@ -5,6 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * IoT事件，含终端事件和平台事件
@@ -86,6 +87,10 @@ public class IotEvent {
 
     /** 速度,单位：km/h*/
     private Integer speed;
+
+    /** 附加信息*/
+    @JSONField(name = "additional_info")
+    private Map<String, Object> additionalInfo;
 
     public String getId() {
         return id;
@@ -245,5 +250,13 @@ public class IotEvent {
 
     public void setSpeed(Integer speed) {
         this.speed = speed;
+    }
+
+    public Map<String, Object> getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public void setAdditionalInfo(Map<String, Object> additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 }

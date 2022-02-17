@@ -381,7 +381,11 @@ public class KafkaV261ConsumerFactory {
             // 如果所有offset都没有更新，则提交全部分片的offset
             Map<TopicPartition, OffsetAndMetadata> offsetAndMetadataMap = kafkaConsumer.committed(topicPartitionSet);
             if (offsetAndMetadataMap != null && !offsetAndMetadataMap.isEmpty()) {
-                offsets.putAll(offsetAndMetadataMap);
+                for (Map.Entry<TopicPartition, OffsetAndMetadata> entry : offsetAndMetadataMap.entrySet()) {
+                    if (entry.getKey() != null && entry.getValue() != null) {
+                        offsets.put(entry.getKey(), entry.getValue());
+                    }
+                }
             }
         }
 
@@ -390,7 +394,9 @@ public class KafkaV261ConsumerFactory {
         }
 
         // 同步提交偏移量
-        kafkaConsumer.commitSync(offsets);
+        if (!offsets.isEmpty()) {
+            kafkaConsumer.commitSync(offsets);
+        }
     }
 
     /**

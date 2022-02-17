@@ -115,8 +115,11 @@ public class KafkaV261AutoConfiguration {
      * @return 消费组名称
      */
     private String buildGroup() {
-        return new StringBuilder()
-                .append("group_")
+        StringBuilder group = new StringBuilder();
+        if (!StringUtils.isEmpty(kafkaV261Properties.getCluster())) {
+            group.append(kafkaV261Properties.getCluster()).append("_");
+        }
+        return group.append("group_")
                 .append(kafkaV261Properties.getOrgcode())
                 .append("_")
                 .append(kafkaV261Properties.getAccessKey())
