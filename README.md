@@ -109,7 +109,8 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 g7.kafka.consumer.enable=true
 g7.kafka.orgcode=200001
 #用户名-密码键值对，可配置多对
-g7.kafka.auth-map={accesskey:accessSecret,accesskey2:accessSecret2}
+g7.kafka.auth-map.accesskey=accessSecret
+g7.kafka.auth-map.accesskey2=accessSecret2
 ```
 
 - 增加启动参数(避免中文路径，注意修改文件路径)
