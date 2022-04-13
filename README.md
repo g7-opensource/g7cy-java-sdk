@@ -108,13 +108,14 @@ List<TruckListInfoResp> truckList = g7OpenapiClient.truckList(req);
 ```properties
 g7.kafka.consumer.enable=true
 g7.kafka.orgcode=200001
-g7.kafka.access-key=dev_accesskey
-g7.kafka.access-secret=dev_accesssecret
+#用户名-密码键值对，可配置多对
+g7.kafka.auth-map.accesskey=accessSecret
+g7.kafka.auth-map.accesskey2=accessSecret2
 ```
 
 - 增加启动参数(避免中文路径，注意修改文件路径)
 ```shell
--DKAFKA_CLIENT_TRUST_STORE=-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk/src/main/resources/kafka/kafka.client.truststore.jks
+-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk/src/main/resources/kafka/kafka.client.truststore.jks
 ```
 
 - 继承要订阅的数据处理类，如定位数据(所有抽象类：cn.com.g7.sdk.kafka.consumer.*)

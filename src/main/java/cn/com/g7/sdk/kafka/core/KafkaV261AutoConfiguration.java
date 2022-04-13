@@ -19,10 +19,12 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
  * spring boot自动配置
+ *
  * @author dengfuwei
  * @version 1.0.0
  * @date 2021/9/18 2:49 下午
@@ -43,6 +45,7 @@ public class KafkaV261AutoConfiguration {
 
     /**
      * 初始化kafka消费者工厂类
+     *
      * @param kafkaMessageProcessor 消息处理器
      * @return kafka消费者创建工厂
      */
@@ -54,75 +57,69 @@ public class KafkaV261AutoConfiguration {
         // kafka消费者工厂bean
         KafkaV261ConsumerFactory kafkaV261ConsumerFactory = new KafkaV261ConsumerFactory();
 
-        String topic = buildTopic();
-        // 根据实际实现的类，初始化消费者配置
-        kafkaV261ConsumerFactory.getProcessorMap().put(topic, kafkaMessageProcessor);
+        Map<String, String> authMap = kafkaV261Properties.getAuthMap();
+        for (Map.Entry<String, String> entry : authMap.entrySet()) {
+            String accessKey = entry.getKey();
+            String accessSecret = entry.getValue();
+            String topic = buildTopic(accessKey);
+            // 根据实际实现的类，初始化消费者配置
+            kafkaV261ConsumerFactory.getProcessorMap().put(topic, kafkaMessageProcessor);
 
-        KafkaV261Properties.Consumer config = kafkaV261Properties.getConsumers().get(topic);
-        if (config == null) {
-            config = new KafkaV261Properties.Consumer();
+            KafkaV261Properties.Consumer config = kafkaV261Properties.getConsumers().get(topic);
+            if (config == null) {
+                config = new KafkaV261Properties.Consumer();
+            }
+            config.setTopic(topic);
+            config.getProps().putIfAbsent(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
+            config.getProps().putIfAbsent(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+            config.getProps().putIfAbsent(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+            config.getProps().putIfAbsent(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+            config.getProps().putIfAbsent(ConsumerConfig.GROUP_ID_CONFIG, buildGroup(accessKey));
+            config.getProps().putIfAbsent(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafkaV261Properties.getKafkaBroker());
+
+            // SASL config
+            config.getProps().putIfAbsent(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, SecurityProtocol.SASL_SSL.name());
+            config.getProps().putIfAbsent(SaslConfigs.SASL_MECHANISM, "PLAIN");
+            config.getProps().putIfAbsent(SaslConfigs.SASL_JAAS_CONFIG, PlainLoginModule.class.getName() + " required username=\"" + accessKey + "\" password=\"" + accessSecret + "\";");
+            // SSL config
+            config.getProps().putIfAbsent(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
+            // 认证文件
+            String truststore = System.getProperty(KafkaConstants.KAFKA_CLIENT_TRUST_STORE);
+            if (StringUtils.isEmpty(truststore)) {
+                throw new IllegalArgumentException("truststore file is empty, please add -D" + KafkaConstants.KAFKA_CLIENT_TRUST_STORE + " parameter");
+            }
+            config.getProps().putIfAbsent(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, truststore);
+            // 密码跟文件对应的，不能随意修改
+            config.getProps().putIfAbsent(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaV261Properties.getTrustStorePassword());
+
+            kafkaV261Properties.getConsumers().put(topic, config);
+
+            // 合并配置参数，不能改变commonProps的数据，否则同时初始化多个会出现配置参数混乱的情况
+            Properties props = new Properties();
+            props.putAll(kafkaV261Properties.getCommonProps());
+            props.putAll(config.getProps());
+            config.setProps(props);
+
+            kafkaV261ConsumerFactory.createIfAbsent(topic, config);
         }
-        config.setTopic(topic);
-        config.getProps().putIfAbsent(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
-        config.getProps().putIfAbsent(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-        config.getProps().putIfAbsent(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        config.getProps().putIfAbsent(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        config.getProps().putIfAbsent(ConsumerConfig.GROUP_ID_CONFIG, buildGroup());
-        config.getProps().putIfAbsent(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafkaV261Properties.getKafkaBroker());
-
-        // SASL config
-        config.getProps().putIfAbsent(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, SecurityProtocol.SASL_SSL.name());
-        config.getProps().putIfAbsent(SaslConfigs.SASL_MECHANISM, "PLAIN");
-        config.getProps().putIfAbsent(SaslConfigs.SASL_JAAS_CONFIG, PlainLoginModule.class.getName() + " required username=\"" + kafkaV261Properties.getAccessKey() + "\" password=\"" + kafkaV261Properties.getAccessSecret() + "\";");
-        // SSL config
-        config.getProps().putIfAbsent(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
-        // 认证文件
-        String truststore = System.getProperty(KafkaConstants.KAFKA_CLIENT_TRUST_STORE);
-        if (StringUtils.isEmpty(truststore)) {
-            throw new IllegalArgumentException("truststore file is empty, please add -D" + KafkaConstants.KAFKA_CLIENT_TRUST_STORE + " parameter");
-        }
-        config.getProps().putIfAbsent(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, truststore);
-        // 密码跟文件对应的，不能随意修改
-        config.getProps().putIfAbsent(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaV261Properties.getTrustStorePassword());
-
-        kafkaV261Properties.getConsumers().put(topic, config);
-
-        // 合并配置参数，不能改变commonProps的数据，否则同时初始化多个会出现配置参数混乱的情况
-        Properties props = new Properties();
-        props.putAll(kafkaV261Properties.getCommonProps());
-        props.putAll(config.getProps());
-        config.setProps(props);
-
-        kafkaV261ConsumerFactory.createIfAbsent(topic, config);
         return kafkaV261ConsumerFactory;
     }
 
     /**
      * 构建topic名称
+     *
      * @return topic名称
      */
-    private String buildTopic() {
-        return new StringBuilder()
-                .append("topic_")
-                .append(kafkaV261Properties.getOrgcode())
-                .append("_")
-                .append(kafkaV261Properties.getAccessKey())
-                .toString();
+    private String buildTopic(String accessKey) {
+        return "topic_" + kafkaV261Properties.getOrgcode() + "_" + accessKey;
     }
 
     /**
      * 构建消费组名称
+     *
      * @return 消费组名称
      */
-    private String buildGroup() {
-        StringBuilder group = new StringBuilder();
-        if (!StringUtils.isEmpty(kafkaV261Properties.getCluster())) {
-            group.append(kafkaV261Properties.getCluster()).append("_");
-        }
-        return group.append("group_")
-                .append(kafkaV261Properties.getOrgcode())
-                .append("_")
-                .append(kafkaV261Properties.getAccessKey())
-                .toString();
+    private String buildGroup(String accessKey) {
+        return "group_" + kafkaV261Properties.getOrgcode() + "_" + accessKey;
     }
 }
