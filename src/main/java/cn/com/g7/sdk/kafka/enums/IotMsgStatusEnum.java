@@ -15,7 +15,7 @@ public enum IotMsgStatusEnum {
     /** 下发中 */
     SENDING_STATUS(4),
     /** 下发结果未知 */
-    UNKNOWN_STSTUS(5),
+    UNKNOWN_STATUS(5),
     /** 下发之后，无需设备应答 */
     UNRELIABLE_STATUS(6);
 

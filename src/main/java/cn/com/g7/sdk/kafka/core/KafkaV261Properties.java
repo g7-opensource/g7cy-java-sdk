@@ -21,6 +21,9 @@ public class KafkaV261Properties {
     /** 用户名-密码键值对*/
     private Map<String, String> authMap;
 
+    /** 集群编号，如果配置值，会拼接到消费组的前面.需要提前配置消费组授权才能使用*/
+    private String cluster;
+
     /** kafkaBroker环境 默认正式*/
     private String kafkaBroker = KafkaConstants.KAFKA_BROKER;
 
@@ -169,6 +172,14 @@ public class KafkaV261Properties {
 
     public void setOrgcode(String orgcode) {
         this.orgcode = orgcode;
+    }
+
+    public String getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
     }
 
     public String getKafkaBroker() {
