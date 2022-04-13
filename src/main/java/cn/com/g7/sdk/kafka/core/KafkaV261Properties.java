@@ -18,11 +18,8 @@ public class KafkaV261Properties {
     /** 机构号*/
     private String orgcode;
 
-    /** 用户名*/
-    private String accessKey;
-
-    /** 密码*/
-    private String accessSecret;
+    /** 用户名-密码键值对*/
+    private Map<String, String> authMap;
 
     /** kafkaBroker环境 默认正式*/
     private String kafkaBroker = KafkaConstants.KAFKA_BROKER;
@@ -174,22 +171,6 @@ public class KafkaV261Properties {
         this.orgcode = orgcode;
     }
 
-    public String getAccessKey() {
-        return accessKey;
-    }
-
-    public void setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
-    }
-
-    public String getAccessSecret() {
-        return accessSecret;
-    }
-
-    public void setAccessSecret(String accessSecret) {
-        this.accessSecret = accessSecret;
-    }
-
     public String getKafkaBroker() {
         return kafkaBroker;
     }
@@ -220,5 +201,13 @@ public class KafkaV261Properties {
 
     public void setConsumers(Map<String, Consumer> consumers) {
         this.consumers = consumers;
+    }
+
+    public Map<String, String> getAuthMap() {
+        return authMap;
+    }
+
+    public void setAuthMap(Map<String, String> authMap) {
+        this.authMap = authMap;
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>cn.com.g7</groupId>
     <artifactId>g7cy-java-sdk</artifactId>
-    <version>v20220112-SNAPSHOT</version>
+    <version>v20220413-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
