@@ -115,7 +115,7 @@ g7.kafka.auth-map.accesskey2=accessSecret2
 
 - 增加启动参数(避免中文路径，注意修改文件路径)
 ```shell
--DKAFKA_CLIENT_TRUST_STORE=-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk/src/main/resources/kafka/kafka.client.truststore.jks
+-DKAFKA_CLIENT_TRUST_STORE=/Users/dengfuwei/Documents/workspace/idea2021/g7cy-java-sdk/src/main/resources/kafka/kafka.client.truststore.jks
 ```
 
 - 继承要订阅的数据处理类，如定位数据(所有抽象类：cn.com.g7.sdk.kafka.consumer.*)
