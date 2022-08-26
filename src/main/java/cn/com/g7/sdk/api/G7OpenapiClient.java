@@ -889,6 +889,15 @@ public class G7OpenapiClient {
         return this.request.request(context, type);
     }
 
+    // 语音对讲
+    public Object batchSendVoiceIntercom(Map<String,String> query) {
+        RequestContext context = buildContext(ApiEnum.VOICE_INTERCOM);
+        AssertUtil.notNull(query);
+        context.setQuery(query);
+        Type type = new TypeReference<G7OpenapiResult<Object>>() {}.getType();
+        return this.request.request(context, type);
+    }
+
     /**
      * 消息下发结果查询
      * https://openapi.g7.com.cn/app/docopenapi/#/productCenter/restApi/detail?uri=%2Fv1%2Fdevice%2Fmessage%2Fsend_result&method=GET&id=53

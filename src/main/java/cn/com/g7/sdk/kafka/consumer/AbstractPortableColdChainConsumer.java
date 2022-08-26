@@ -16,7 +16,7 @@ public abstract class AbstractPortableColdChainConsumer implements IMessageConsu
 
     @Override
     public String code() {
-        return DataCodeEnum.FIXED_COLD_CHAIN.getCode();
+        return DataCodeEnum.PORTABLE_COLD_CHAIN.getCode();
     }
 
     @Override
