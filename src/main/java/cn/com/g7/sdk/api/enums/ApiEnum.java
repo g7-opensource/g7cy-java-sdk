@@ -133,6 +133,10 @@ public enum ApiEnum {
 
     /** 消息下发结果查询 */
     MESSAGE_SEND_RESULT("/v1/device/message/send_result", MethodEnum.GET),
+
+    //语音对讲
+    VOICE_INTERCOM("/v1/api/message/intercom_by_channel", MethodEnum.GET),
+
     ;
 
     /** 接口地址*/
