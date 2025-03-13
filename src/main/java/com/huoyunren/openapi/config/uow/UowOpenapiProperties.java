@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @version 1.0.0
  */
 @ConfigurationProperties(prefix = "g7.openapi")
-public class OpenapiProperties {
+public class UowOpenapiProperties {
 
     /** url*/
     private String url = ApiConstants.URL_ONLINE;

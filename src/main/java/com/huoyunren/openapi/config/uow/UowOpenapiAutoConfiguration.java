@@ -14,16 +14,16 @@ import org.springframework.web.client.RestTemplate;
  * @version 1.0.0
  */
 @Configuration
-@EnableConfigurationProperties(OpenapiProperties.class)
-public class OpenapiAutoConfiguration {
+@EnableConfigurationProperties(UowOpenapiProperties.class)
+public class UowOpenapiAutoConfiguration {
 
     @Resource
-    private OpenapiProperties openapiProperties;
+    private UowOpenapiProperties uowOpenapiProperties;
 
     @Bean(value = "uowG7OpenapiClient")
     @ConditionalOnMissingBean
     @ConditionalOnBean(RestTemplate.class)
     public G7OpenapiClient g7OpenapiClient() {
-        return new G7OpenapiClient(openapiProperties.getAccessKey(), openapiProperties.getAccessSecret());
+        return new G7OpenapiClient(uowOpenapiProperties.getAccessKey(), uowOpenapiProperties.getAccessSecret());
     }
 }
