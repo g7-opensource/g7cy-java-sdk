@@ -13,6 +13,7 @@ import com.huoyunren.openapi.util.http.G7OpenapiClient;
 import com.huoyunren.openapi.util.http.G7OpenapiResult;
 import com.huoyunren.openapi.util.http.RequestContext;
 import java.lang.reflect.Type;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
+    @Resource(name = "uowG7OpenapiClient")
     private G7OpenapiClient g7OpenapiClient;
 
     @Override

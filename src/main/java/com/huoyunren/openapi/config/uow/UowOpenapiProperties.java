@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author luoyu
  * @version 1.0.0
  */
-@ConfigurationProperties(prefix = "g7.openapi")
+@ConfigurationProperties(prefix = "uow.openapi")
 public class UowOpenapiProperties {
 
     /** url*/
