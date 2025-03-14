@@ -6,7 +6,7 @@
 
     <groupId>com.huoyunren.openapi</groupId>
     <artifactId>g7e6-openapi-sdk</artifactId>
-    <version>{g7e6.openapi.sdk.version}</version>
+    <version>${g7e6.openapi.sdk.version}</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +18,7 @@
         <spring-boot.version>2.2.8.RELEASE</spring-boot.version>
         <kafka-clients.version>2.6.3.1</kafka-clients.version>
         <junit.version>1.5.1</junit.version>
-        <g7e6.openapi.sdk.version>1.0.1</g7e6.openapi.sdk.version>
+        <g7e6.openapi.sdk.version>1.0.1-SNAPSHOT</g7e6.openapi.sdk.version>
     </properties>
 
     <dependencies>
@@ -117,7 +117,16 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <url>http://nexus3.chinawayltd.com/repository/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://nexus3.chinawayltd.com/repository/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>
