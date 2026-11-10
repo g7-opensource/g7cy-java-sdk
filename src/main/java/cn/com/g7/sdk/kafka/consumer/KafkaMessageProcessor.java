@@ -31,7 +31,10 @@ public class KafkaMessageProcessor implements IKafkaMessageProcessor {
     public void process(String code, ConsumerRecord<String, String> record) {
         log.info("kafka message, topic:{}, value:{}", record.topic(), record.value());
         JSONObject recordObj = JSON.parseObject(record.value());
-        String dataCode = recordObj.getString("code");
+        String dataCode = recordObj.getString("event");
+        if (dataCode == null) {
+             dataCode = recordObj.getString("code");
+        }
         IMessageConsumer messageConsumer = messageConsumerMap.get(dataCode);
         if (messageConsumer == null) {
             log.debug("can't process the data:{}", dataCode);
