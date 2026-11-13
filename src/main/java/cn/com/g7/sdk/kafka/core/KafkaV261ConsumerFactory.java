@@ -127,9 +127,6 @@ public class KafkaV261ConsumerFactory {
                 log.info("{} partitions revoked:{}", context.getCode(), partitions);
                 context.getRecordsQueue().clear();
                 commit(context, kafkaConsumer, offsets);
-                if (config.isStop()) {
-                    kafkaConsumer.close();
-                }
             }
 
             @Override
@@ -137,9 +134,6 @@ public class KafkaV261ConsumerFactory {
                 // re balance 结束，拉取数据之前，清空offsets标记
                 log.info("{} partitions assigned:{}", context.getCode(), partitions);
                 offsets.clear();
-                if (config.isStop()) {
-                    kafkaConsumer.close();
-                }
             }
         });
 
